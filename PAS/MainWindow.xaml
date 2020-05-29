@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PAS"
         mc:Ignorable="d"
-        Title="Patient Administration System" Height="450" Width="700">
+        Title="Patient Administration System" Height="450" Width="700" WindowStartupLocation="CenterScreen">
     <Grid Background="#FFE8EDEE" >
         <Rectangle Fill="#FF425563" HorizontalAlignment="Left" Height="421" Stroke="Black" VerticalAlignment="Top" Width="168"/>
         <Rectangle Fill="White" HorizontalAlignment="Left" Height="82" VerticalAlignment="Top" Width="694"/>
@@ -17,6 +17,8 @@
         <Label Content="PAS" HorizontalAlignment="Left" Margin="75,15,0,0" VerticalAlignment="Top" Foreground="White" FontSize="30" FontFamily="Gen"/>
         <Label Content="Dashboard" HorizontalAlignment="Left" Margin="186,15,0,0" VerticalAlignment="Top" Foreground="Black" FontSize="30" FontFamily="Gen" Background="White"/>
         <Image HorizontalAlignment="Left" Height="42" Margin="19,15,0,0" VerticalAlignment="Top" Width="37" Source="health.png"/>
+        <Image HorizontalAlignment="Left" Height="22" Margin="511,32,0,0" VerticalAlignment="Top" Width="27" Source="Zoom-icon.png"/>
+        <Button Content="Search" HorizontalAlignment="Left" Margin="543,32,0,0" VerticalAlignment="Top" Width="114" Height="23" Background="#FF005EB8" Foreground="White" BorderBrush="{x:Null}" FontFamily="Gen" Click="Button_Click_1"/>
     </Grid>
 
 </Window>

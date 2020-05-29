@@ -10,27 +10,24 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace PAS
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Search.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Search : Window
     {
-        public MainWindow()
+        public Search()
         {
             InitializeComponent();
         }
 
-    
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Search se = new Search();
-            se.Show();
+            MainWindow mw = new MainWindow();
+            mw.Show();
             this.Close();
         }
     }

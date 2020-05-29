@@ -1,0 +1,36 @@
+﻿<Window x:Class="PAS.Search"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PAS"
+        mc:Ignorable="d"
+        Title="Patient Administration System" Height="450" Width="700" WindowStartupLocation="CenterScreen">
+    <Grid Background="#FFE8EDEE" >
+        <Rectangle Fill="#FF425563" HorizontalAlignment="Left" Height="421" Stroke="Black" VerticalAlignment="Top" Width="168"/>
+        <Rectangle Fill="White" HorizontalAlignment="Left" Height="82" VerticalAlignment="Top" Width="694"/>
+        <Rectangle Fill="#FF005EB8" HorizontalAlignment="Left" Height="82" Stroke="Black" VerticalAlignment="Top" Width="168"/>
+        <Button Content="Dashboard" HorizontalAlignment="Left" Margin="0,82,0,0" VerticalAlignment="Top" Width="168" Height="44" Background="#FF425563" Foreground="White" BorderBrush="{x:Null}" FontFamily="Gen" Click="Button_Click"/>
+        <Button Content="In Patients" HorizontalAlignment="Left" Margin="0,126,0,0" VerticalAlignment="Top" Width="168" Height="44" Background="#FF425563" Foreground="White" BorderBrush="{x:Null}" FontFamily="Gen"/>
+        <Button Content="Out Patients" HorizontalAlignment="Left" Margin="0,168,0,0" VerticalAlignment="Top" Width="168" Height="44" Background="#FF425563" Foreground="White" BorderBrush="{x:Null}" FontFamily="Gen"/>
+        <Label Content="PAS" HorizontalAlignment="Left" Margin="75,15,0,0" VerticalAlignment="Top" Foreground="White" FontSize="30" FontFamily="Gen"/>
+        <Label Content="Search" HorizontalAlignment="Left" Margin="186,15,0,0" VerticalAlignment="Top" Foreground="Black" FontSize="30" FontFamily="Gen" Background="White"/>
+        <Image HorizontalAlignment="Left" Height="42" Margin="19,15,0,0" VerticalAlignment="Top" Width="37" Source="health.png"/>
+        <Image HorizontalAlignment="Left" Height="40" Margin="618,104,0,0" VerticalAlignment="Top" Width="49" Source="Zoom-icon.png"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="203,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Search" HorizontalAlignment="Left" Margin="553,386,0,0" VerticalAlignment="Top" Width="114" Height="23" Background="#FF425563" Foreground="White" BorderBrush="{x:Null}" FontFamily="Gen"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="203,170,0,0" TextWrapping="Wrap" Text="Surname" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="GenderCombo" HorizontalAlignment="Left" Margin="203,236,0,0" VerticalAlignment="Top" Width="120">
+            <ComboBoxItem Background="{x:Null}" Content="Male"/>
+            <ComboBoxItem Background="{x:Null}" Content="Female"/>
+        </ComboBox>
+        <TextBlock HorizontalAlignment="Left" Margin="203,87,0,0" TextWrapping="Wrap" Text="First Name" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="203,149,0,0" TextWrapping="Wrap" Text="Surname" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="203,215,0,0" TextWrapping="Wrap" Text="Gender" VerticalAlignment="Top"/>
+        <ComboBox HorizontalAlignment="Left" Margin="416,104,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="416,87,0,0" TextWrapping="Wrap" Text="Height" VerticalAlignment="Top"/>
+        <ComboBox HorizontalAlignment="Left" Margin="416,170,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="416,149,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Eye Colour"/><LineBreak/><Run Text=""/></TextBlock>
+        <Button Content="Statistics" HorizontalAlignment="Left" Margin="0,215,0,0" VerticalAlignment="Top" Width="168" Height="44" Background="#FF425563" Foreground="White" BorderBrush="{x:Null}" FontFamily="Gen"/>
+    </Grid>
+</Window>
