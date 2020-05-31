@@ -25,15 +25,41 @@ namespace PAS
         public MainWindow()
         {
             InitializeComponent();
+            int people = LoadPatientInfo();
+            //need to use property only (TextboxText), as i cannot bind with a variable.
+            totalPersons.DataContext = new TextboxText() { textdata = people };
+            Console.WriteLine(people);
         }
 
-    
+        private int LoadPatientInfo()
+        {
+            var nodeCount = 0;
+            using (var reader = XmlReader.Create("patients.xml"))
+            {
+                while (reader.Read())
+                {
+                    //if the reader finds an element by the name of surname, add one to count.
+                    if (reader.NodeType == XmlNodeType.Element &&
+                        reader.Name == "SurName")
+                    {
+                        nodeCount++;
+                    }
+                }
+            }
+            return nodeCount;
+        }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             Search se = new Search();
             se.Show();
             this.Close();
+        }
+
+        public class TextboxText
+        {
+            public int textdata { get; set; }
+
         }
     }
 }

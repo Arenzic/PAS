@@ -217,7 +217,9 @@
     <Resource Include="Circle-web-icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="patients.xml" />
+    <Content Include="patients.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
