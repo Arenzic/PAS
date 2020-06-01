@@ -26,12 +26,6 @@ namespace PAS
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            MainWindow mw = new MainWindow();
-            mw.Show();
-            this.Close();
-        }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
@@ -57,6 +51,28 @@ namespace PAS
                 System.Windows.MessageBox.Show("Invalid Input");
                 FNameInput.Text = string.Empty;
             }
+        }
+
+        private void AddPatient_Button(object sender, RoutedEventArgs e)
+        {
+            
+                AddPatient AddPat = new AddPatient();
+                AddPat.Show();
+                this.Close();
+            
+        }
+
+        private void Dashboard_Button(object sender, RoutedEventArgs e)
+        {
+            MainWindow mw = new MainWindow();
+            mw.Show();
+            this.Close();
+        }
+
+        private void Reset_Button_Click(object sender, RoutedEventArgs e)
+        {
+            FNameInput.Text = "";
+            FSurnameInput.Text = "";
         }
     }
 }

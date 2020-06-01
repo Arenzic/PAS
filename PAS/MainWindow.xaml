@@ -11,20 +11,20 @@
         <Rectangle Fill="#FF425563" HorizontalAlignment="Left" Height="421" Stroke="Black" VerticalAlignment="Top" Width="168"/>
         <Rectangle Fill="White" HorizontalAlignment="Left" Height="82" VerticalAlignment="Top" Width="694"/>
         <Rectangle Fill="#FF005EB8" HorizontalAlignment="Left" Height="82" Stroke="Black" VerticalAlignment="Top" Width="168"/>
-        <Button Content="Dashboard" HorizontalAlignment="Left" Margin="0,82,0,0" VerticalAlignment="Top" Width="168" Height="44" Background="#FF425563" Foreground="White" BorderBrush="{x:Null}" FontFamily="Gen"/>
-        <Button Content="In Patients" HorizontalAlignment="Left" Margin="0,126,0,0" VerticalAlignment="Top" Width="168" Height="44" Background="#FF425563" Foreground="White" BorderBrush="{x:Null}" FontFamily="Gen"/>
-        <Button Content="All Patients" HorizontalAlignment="Left" Margin="0,170,0,0" VerticalAlignment="Top" Width="168" Height="44" Background="#FF425563" Foreground="White" BorderBrush="{x:Null}" FontFamily="Gen"/>
+        <Button Content="In Patients" HorizontalAlignment="Left" Margin="0,82,0,0" VerticalAlignment="Top" Width="168" Height="44" Background="#FF425563" Foreground="White" BorderBrush="{x:Null}" FontFamily="Gen"/>
+        <Button Content="All Patients" HorizontalAlignment="Left" Margin="0,126,0,0" VerticalAlignment="Top" Width="168" Height="44" Background="#FF425563" Foreground="White" BorderBrush="{x:Null}" FontFamily="Gen"/>
         <Label Content="PAS" HorizontalAlignment="Left" Margin="75,15,0,0" VerticalAlignment="Top" Foreground="White" FontSize="30" FontFamily="Gen"/>
         <Label Content="Dashboard" HorizontalAlignment="Left" Margin="186,15,0,0" VerticalAlignment="Top" Foreground="Black" FontSize="30" FontFamily="Gen" Background="White"/>
-        <Image HorizontalAlignment="Left" Height="42" Margin="19,15,0,0" VerticalAlignment="Top" Width="37" Source="health.png"/>
-        <Image HorizontalAlignment="Left" Height="22" Margin="511,32,0,0" VerticalAlignment="Top" Width="27" Source="Zoom-icon.png"/>
+        <Image HorizontalAlignment="Left" Height="42" Margin="19,15,0,0" VerticalAlignment="Top" Width="37" Source="Icons/health.png"/>
+        <Image HorizontalAlignment="Left" Height="22" Margin="511,32,0,0" VerticalAlignment="Top" Width="27" Source="Icons/Zoom-icon.png"/>
         <Button Content="Search" HorizontalAlignment="Left" Margin="543,32,0,0" VerticalAlignment="Top" Width="114" Height="23" Background="#FF005EB8" Foreground="White" BorderBrush="{x:Null}" FontFamily="Gen" Click="Button_Click_1"/>
-        <Image HorizontalAlignment="Left" Height="109" Margin="218,117,0,0" VerticalAlignment="Top" Width="120" Source="Circle-web-icon.png"/>
-        <Image HorizontalAlignment="Left" Height="109" Margin="490,117,0,0" VerticalAlignment="Top" Width="107" Source="Circle-down-icon.png"/>
+        <Image HorizontalAlignment="Left" Height="109" Margin="218,117,0,0" VerticalAlignment="Top" Width="120" Source="Icons/Circle-web-icon.png"/>
+        <Image HorizontalAlignment="Left" Height="109" Margin="490,117,0,0" VerticalAlignment="Top" Width="107" Source="Icons/Circle-down-icon.png"/>
         <TextBlock Name ="totalPersons"  HorizontalAlignment="Left" Margin="252,231,0,0" TextWrapping="Wrap" FontSize="20"  VerticalAlignment="Top"> <Run Text="{Binding textdata}"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="506,263,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="InPatients"/><Run Text=" in PAS "/></TextBlock>
-        <Button Content="Add Patient" HorizontalAlignment="Left" Margin="0,214,0,0" VerticalAlignment="Top" Width="168" Height="44" Background="#FF425563" Foreground="White" BorderBrush="{x:Null}" FontFamily="Gen"/>
-        <TextBlock HorizontalAlignment="Left" Margin="234,263,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Records "/><Run Text="in "/><Run Text="PAS"/></TextBlock>
+        <Button Content="Add Patient" HorizontalAlignment="Left" Margin="0,170,0,0" VerticalAlignment="Top" Width="168" Height="44" Background="#FF425563" Foreground="White" BorderBrush="{x:Null}" FontFamily="Gen" Click="AddPatient_Button"/>
+        <TextBlock HorizontalAlignment="Left" Margin="234,263,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Patients"/><Run Text=" "/><Run Text="in "/><Run Text="PAS"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="597,393,-281,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="376" Opacity="0.3"><Run Text=" "/><Run Text="Version 16.5.4"/></TextBlock>
     </Grid>
 
 </Window>

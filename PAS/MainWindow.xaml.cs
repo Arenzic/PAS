@@ -28,7 +28,6 @@ namespace PAS
             int people = LoadPatientInfo();
             //need to use property only (TextboxText), as i cannot bind with a variable.
             totalPersons.DataContext = new TextboxText() { textdata = people };
-            Console.WriteLine(people);
         }
 
         private int LoadPatientInfo()
@@ -60,6 +59,15 @@ namespace PAS
         {
             public int textdata { get; set; }
 
+        }
+
+
+
+        private void AddPatient_Button(object sender, RoutedEventArgs e)
+        {
+            AddPatient AddPat = new AddPatient();
+            AddPat.Show();
+            this.Close();
         }
     }
 }

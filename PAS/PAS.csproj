@@ -147,10 +147,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddPatient.xaml.cs">
+      <DependentUpon>AddPatient.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Person.cs" />
     <Compile Include="Search.xaml.cs">
       <DependentUpon>Search.xaml</DependentUpon>
     </Compile>
+    <Page Include="AddPatient.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -199,24 +206,19 @@
     <Folder Include="Classes\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Icons\health.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Icons\Zoom-icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Zoom-icon.png" />
+    <Resource Include="Icons\health.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="health.png" />
+    <Resource Include="Icons\Circle-down-icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Circle-down-icon.png" />
+    <Resource Include="Icons\Circle-web-icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Circle-web-icon.png" />
-  </ItemGroup>
-  <ItemGroup>
+    <Resource Include="Icons\Circle-add-icon.png" />
     <Content Include="patients.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
