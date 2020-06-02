@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,14 +44,17 @@ namespace PAS
             if (FNameInput.Text != "" && SurnameInput.Text != "")
             {
                 //parsing height from string to decimal
-                string heighttest = HeightInput.Text;
+                String play = HeightInput.Text;
+                decimal test = decimal.Parse(play, System.Globalization.NumberStyles.AllowDecimalPoint, System.Globalization.NumberFormatInfo.InvariantInfo);
+
 
                 //combo box selected items to strings
                 string genderChosen = GenderCombo.Text;
                 string eyeColor = EyeColorCombo.Text;
 
-                Console.WriteLine(FNameInput);
+                Console.WriteLine(FNameInput.Text);
                 Console.WriteLine(SurnameInput.Text);
+                Console.WriteLine(test);
                 Console.WriteLine(genderChosen);
                 Console.WriteLine(eyeColor);
                 // Append(FNameInput.Text, SurnameInput.Text, heightValue, GenderCombo.SelectedItem, EyeColorCombo.SelectedItem);
@@ -83,5 +87,8 @@ namespace PAS
             doc = new XDocument(new XElement("Person", person));
             doc.Save("patients.xml");
         }
+
+
+
     }
 }
