@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PAS
 {
-    class Person
+    public class Person
     {
         public string SurName { get; private set; }
         public string GivenName { get; private set; }
