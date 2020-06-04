@@ -43,7 +43,18 @@ namespace PAS
         {
             if (FNameInput.Text != "" && SurnameInput.Text != "")
             {
-                
+                Person p = new Person();
+                p.SurName = SurnameInput.Text;
+                p.GivenName = FNameInput.Text;
+                //p.Height = Height.te
+
+                ComboBoxItem GenderItem = (ComboBoxItem)GenderCombo.SelectedItem;
+                p.Gender = GenderItem.Content.ToString();
+
+                ComboBoxItem EyeItem = (ComboBoxItem)EyeColorCombo.SelectedItem;
+                p.EyeColor = EyeItem.Content.ToString();
+
+               
             }
             else
             {

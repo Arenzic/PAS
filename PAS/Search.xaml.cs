@@ -31,20 +31,8 @@ namespace PAS
         {
             if(FNameInput.Text != null && FNameInput.Text.Length >=3)
             {
-                XmlDocument doc = new XmlDocument();
-                doc.Load("patients.xml");
+                
 
-                foreach(XmlNode node in doc.DocumentElement)
-                {
-                    String name = node.Attributes[0].InnerText;
-                    if(name == FNameInput.Text)
-                    {
-                       foreach(XmlNode child in node.ChildNodes)
-                        {
-                            searchResults.Items.Add(child.InnerText);
-                        }
-                    }
-                }
             }
             else
             {

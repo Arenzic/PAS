@@ -27,9 +27,8 @@
         <TextBlock HorizontalAlignment="Left" Margin="203,87,0,0" TextWrapping="Wrap" Text="First Name" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="203,149,0,0" TextWrapping="Wrap" Text="Surname" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="203,215,0,0" TextWrapping="Wrap" Text="Gender" VerticalAlignment="Top"/>
-        <ComboBox HorizontalAlignment="Left" Margin="416,104,0,0" VerticalAlignment="Top" Width="120"/>
         <TextBlock HorizontalAlignment="Left" Margin="416,87,0,0" TextWrapping="Wrap" Text="Height" VerticalAlignment="Top"/>
-        <ComboBox HorizontalAlignment="Left" Margin="416,170,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="EyeColorCombo" HorizontalAlignment="Left" Margin="416,170,0,0" VerticalAlignment="Top" Width="120"/>
         <TextBlock HorizontalAlignment="Left" Margin="416,149,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Eye Colour"/><LineBreak/><Run Text=""/></TextBlock>
         <ListView x:Name="searchResults" HorizontalAlignment="Left" Height="112" Margin="203,286,0,0" VerticalAlignment="Top" Width="464">
             <ListView.View>
@@ -38,5 +37,6 @@
         </ListView>
         <Button Content="Add Patient" HorizontalAlignment="Left" Margin="0,214,0,0" VerticalAlignment="Top" Width="168" Height="44" Background="#FF425563" Foreground="White" BorderBrush="{x:Null}" FontFamily="Gen" Click="AddPatient_Button"/>
         <Button x:Name="ResetButton" Content="Reset" HorizontalAlignment="Left" Margin="544,235,0,0" VerticalAlignment="Top" Width="114" Height="23" Background="#FF425563" Foreground="White" BorderBrush="{x:Null}" FontFamily="Gen" Click="Reset_Button_Click"/>
+        <TextBox x:Name="HeightCombo" HorizontalAlignment="Left" Height="23" Margin="416,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
     </Grid>
 </Window>
