@@ -21,6 +21,16 @@ namespace PAS
             }
         }
 
+
+         public static int CountUser()
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                int userCount = cnn.Execute("select count (patientId) from person");
+                return userCount;
+            }
+            
+        }
         public static void SavePerson(Person person)
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))

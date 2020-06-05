@@ -25,7 +25,7 @@ namespace PAS
         public MainWindow()
         {
             InitializeComponent();
-            int people = LoadPatientInfo();
+            int people = SqliteDataAccess.CountUser();
             //need to use property only (TextboxText), as i cannot bind with a variable.
             totalPersons.DataContext = new TextboxText() { textdata = people };
         }
