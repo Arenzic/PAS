@@ -3,46 +3,95 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace PAS
 {
     public class SqliteDataAccess
     {
-        public static List<Person> LoadPeople()
+
+        private SQLiteConnection sql_con;
+        private SQLiteCommand sql_cmd;
+        private SQLiteDataAdapter DB;
+        private DataSet DS = new DataSet();
+        private DataTable DT = new DataTable();
+        private SQLiteConnection sqlite;
+
+       
+        public SqliteDataAccess()
         {
-            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
-            {
-                var output = cnn.Query<Person>("select * from person", new DynamicParameters());
-                return output.ToList();
-            }
+            //connection to my pas-database
+            sqlite = new SQLiteConnection("Data Source=./pas-database.db");
+
         }
 
 
-         public static int CountUser()
-        {
-            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+
+        public int LoadPerson()
             {
-                int userCount = cnn.Execute("select count (patientId) from person");
-                return userCount;
-            }
+                string stmt = "select count (patientId) from person";
+                int Rowcount = 0;
+            sqlite.Open();
+            SQLiteCommand cmd = new SQLiteCommand(sqlite);
+            cmd.CommandText = "select count (patientId) from person";
+
+            Rowcount = Convert.ToInt32(cmd.ExecuteScalar());
+
+            cmd.CommandText = "select patientId from person";
+            SQLiteDataReader reader = cmd.ExecuteReader();
+
+            return Rowcount;
+        }
             
-        }
-        public static void SavePerson(Person person)
-        {
-            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
-            {
-                cnn.Execute("insert into person(SurName, GivenName, Height, Gender,EyeColor) values (@SurName, @GivenName, @Height, @Gender, @EyeColor", person);
-            }
-        }
+        
+        
 
-        private static string LoadConnectionString(string id = "Default")
+         
+
+
+
+
+        /*
+        private void LoadPerson()
         {
-            //look for all connections strings with id of default
-            return ConfigurationManager.ConnectionStrings[id].ConnectionString;
+            SetConnection();
+            sql_con.Open();
+            sql_cmd = sql_con.CreateCommand();
+            string CommandText = "select id, desc from mains";
+            DB = new SQLiteDataAdapter(CommandText, sql_con);
+            DS.Reset();
+            DB.Fill(DS);
+            DT = DS.Tables[0];
+            Grid.DataSource = DT;
+            sql_con.Close();
         }
-    }
+        */
+
+            /*
+            private void AddPerson()
+        {
+            string txtSQLQuery = "insert into  mains (desc) values ('" + txtDesc.Text + "')";
+            ExecuteQuery(txtSQLQuery);
+            }
+
+
+            private void ExecuteQuery(string txtQuery) 
+            { 
+            SetConnection(); 
+            sql_con.Open(); 
+            sql_cmd = sql_con.CreateCommand(); 
+            sql_cmd.CommandText=txtQuery; 
+            sql_cmd.ExecuteNonQuery(); 
+            sql_con.Close(); 
+           }
+
+    */
+
+
+}
 }
