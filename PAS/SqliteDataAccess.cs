@@ -34,15 +34,15 @@ namespace PAS
 
         public int LoadPerson()
             {
-                string stmt = "select count (patientId) from person";
+                string stmt = "select count (SurName) from person";
                 int Rowcount = 0;
             sqlite.Open();
             SQLiteCommand cmd = new SQLiteCommand(sqlite);
-            cmd.CommandText = "select count (patientId) from person";
+            cmd.CommandText = "select count (SurName) from person";
 
             Rowcount = Convert.ToInt32(cmd.ExecuteScalar());
 
-            cmd.CommandText = "select patientId from person";
+            cmd.CommandText = "select SurName from person";
             SQLiteDataReader reader = cmd.ExecuteReader();
 
             return Rowcount;
@@ -72,25 +72,29 @@ namespace PAS
         }
         */
 
-            /*
-            private void AddPerson()
+            
+            public void AddPerson(Person p)
         {
-            string txtSQLQuery = "insert into  mains (desc) values ('" + txtDesc.Text + "')";
-            ExecuteQuery(txtSQLQuery);
+            SQLiteCommand insertQuery = new SQLiteCommand("insert into person values (?, ?, ?, ?, ?)", sqlite);
+            insertQuery.Parameters.Add(p.SurName);
+            insertQuery.Parameters.Add(p.GivenName);
+            insertQuery.Parameters.Add(p.Height);
+            insertQuery.Parameters.Add(p.Gender);
+            insertQuery.Parameters.Add(p.EyeColor);
+            try
+            {
+                insertQuery.ExecuteNonQuery();
             }
+            catch(Exception exc)
+            {
+                throw new Exception(exc.Message);
+            }
+        }
 
 
-            private void ExecuteQuery(string txtQuery) 
-            { 
-            SetConnection(); 
-            sql_con.Open(); 
-            sql_cmd = sql_con.CreateCommand(); 
-            sql_cmd.CommandText=txtQuery; 
-            sql_cmd.ExecuteNonQuery(); 
-            sql_con.Close(); 
-           }
+            
 
-    */
+    
 
 
 }

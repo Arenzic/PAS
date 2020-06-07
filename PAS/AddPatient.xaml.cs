@@ -46,14 +46,15 @@ namespace PAS
                 Person p = new Person();
                 p.SurName = SurnameInput.Text;
                 p.GivenName = FNameInput.Text;
-                //p.Height = Height.te
-
+                p.Height = decimal.Parse(HeightInput.Text);
                 ComboBoxItem GenderItem = (ComboBoxItem)GenderCombo.SelectedItem;
                 p.Gender = GenderItem.Content.ToString();
 
                 ComboBoxItem EyeItem = (ComboBoxItem)EyeColorCombo.SelectedItem;
                 p.EyeColor = EyeItem.Content.ToString();
 
+                SqliteDataAccess sqlDataA = new SqliteDataAccess();
+                sqlDataA.AddPerson(p);
                
             }
             else
