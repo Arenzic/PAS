@@ -8,18 +8,15 @@ using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Forms;
 
 namespace PAS
 {
     public class SqliteDataAccess
     {
 
-        private SQLiteConnection sql_con;
-        private SQLiteCommand sql_cmd;
-        private SQLiteDataAdapter DB;
-        private DataSet DS = new DataSet();
-        private DataTable DT = new DataTable();
         private SQLiteConnection sqlite;
 
        
@@ -27,6 +24,7 @@ namespace PAS
         {
             //connection to my pas-database
             sqlite = new SQLiteConnection("Data Source=./pas-database.db");
+            sqlite.Open();
 
         }
 
@@ -34,56 +32,67 @@ namespace PAS
 
         public int LoadPerson()
             {
-                string stmt = "select count (SurName) from person";
-                int Rowcount = 0;
-            sqlite.Open();
+            int Rowcount = 0;
             SQLiteCommand cmd = new SQLiteCommand(sqlite);
             cmd.CommandText = "select count (SurName) from person";
 
             Rowcount = Convert.ToInt32(cmd.ExecuteScalar());
 
-            cmd.CommandText = "select SurName from person";
-            SQLiteDataReader reader = cmd.ExecuteReader();
 
             return Rowcount;
         }
-            
-        
-        
-
-         
-
-
-
 
         /*
-        private void LoadPerson()
+        public void ReadData()
         {
-            SetConnection();
-            sql_con.Open();
-            sql_cmd = sql_con.CreateCommand();
-            string CommandText = "select id, desc from mains";
-            DB = new SQLiteDataAdapter(CommandText, sql_con);
-            DS.Reset();
-            DB.Fill(DS);
-            DT = DS.Tables[0];
-            Grid.DataSource = DT;
-            sql_con.Close();
+            SQLiteDataReader sqlite_datareader;
+            SQLiteCommand sqlite_cmd;
+            sqlite_cmd = sqlite.CreateCommand();
+            sqlite_cmd.CommandText = "select * from person";
+
+            sqlite_datareader = sqlite_cmd.ExecuteReader();
+            while (sqlite_datareader.Read())
+            {
+                string myreader = sqlite_datareader.GetString(0);
+                Console.WriteLine(myreader);
+            }
+            sqlite.Close();
         }
+
         */
 
-            
-            public void AddPerson(Person p)
+
+
+
+
+
+
+
+
+        public void AddPerson(Person p)
         {
-            SQLiteCommand insertQuery = new SQLiteCommand("insert into person values (?, ?, ?, ?, ?)", sqlite);
-            insertQuery.Parameters.Add(p.SurName);
-            insertQuery.Parameters.Add(p.GivenName);
-            insertQuery.Parameters.Add(p.Height);
-            insertQuery.Parameters.Add(p.Gender);
-            insertQuery.Parameters.Add(p.EyeColor);
+
+            SQLiteCommand insertQuery = new SQLiteCommand("insert into person values (@fname, @gname, @height, @gender, @eyecolor)", sqlite);
+            insertQuery.Parameters.AddWithValue("@fname", p.SurName);
+            insertQuery.Parameters.AddWithValue("@gname", p.GivenName);
+            //SQLiteParameter param = new SQLiteParameter("@height", p.Height);
+            //param.SourceColumn = "height";
+            //param.Precision = 18;
+            //param.Scale = 2;
+            // insertQuery.Parameters.Add(param);
+            insertQuery.Parameters.AddWithValue("@height", p.Height);
+            insertQuery.Parameters.AddWithValue("@gender", p.Gender);
+            insertQuery.Parameters.AddWithValue("@eyecolor", p.EyeColor);
             try
             {
-                insertQuery.ExecuteNonQuery();
+                
+                int i=insertQuery.ExecuteNonQuery();
+                insertQuery.Connection = sqlite;
+                System.Windows.MessageBox.Show("Person Added.");
+                sqlite.Close();
+
+
+
             }
             catch(Exception exc)
             {

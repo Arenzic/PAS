@@ -41,20 +41,32 @@ namespace PAS
 
         private void Add_Button_Click(object sender, RoutedEventArgs e)
         {
-            if (FNameInput.Text != "" && SurnameInput.Text != "")
+            if (FNameInput.Text != "" && SurnameInput.Text != "" && HeightInput.Text != "" && GenderCombo.SelectedIndex != -1 && EyeColorCombo.SelectedIndex != -1)
             {
+                //assinging to class
                 Person p = new Person();
                 p.SurName = SurnameInput.Text;
                 p.GivenName = FNameInput.Text;
+
                 p.Height = decimal.Parse(HeightInput.Text);
+
+                //combo box selections to string values.
                 ComboBoxItem GenderItem = (ComboBoxItem)GenderCombo.SelectedItem;
                 p.Gender = GenderItem.Content.ToString();
 
                 ComboBoxItem EyeItem = (ComboBoxItem)EyeColorCombo.SelectedItem;
                 p.EyeColor = EyeItem.Content.ToString();
 
+                //launching the addPerson method, and passing it the class person.
                 SqliteDataAccess sqlDataA = new SqliteDataAccess();
                 sqlDataA.AddPerson(p);
+
+                //reset fields.
+                SurnameInput.Text = "";
+                FNameInput.Text = "";
+                HeightInput.Text = "";
+                GenderCombo.Items.Clear();
+                EyeColorCombo.Items.Clear();
                
             }
             else

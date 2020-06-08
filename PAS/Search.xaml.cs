@@ -29,6 +29,9 @@ namespace PAS
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            SqliteDataAccess sqlData = new SqliteDataAccess();
+           // sqlData.ReadData();
+            /*
             if(FNameInput.Text != null && FNameInput.Text.Length >=3)
             {
                 
@@ -39,6 +42,7 @@ namespace PAS
                 System.Windows.MessageBox.Show("Invalid Input");
                 FNameInput.Text = string.Empty;
             }
+            */
         }
 
         private void AddPatient_Button(object sender, RoutedEventArgs e)
