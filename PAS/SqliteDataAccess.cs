@@ -23,7 +23,7 @@ namespace PAS
         public SqliteDataAccess()
         {
             //connection to my pas-database
-            sqlite = new SQLiteConnection("Data Source=./pas-database.db");
+            sqlite = new SQLiteConnection("Data Source=pas-database.db");
             sqlite.Open();
 
         }
@@ -75,12 +75,12 @@ namespace PAS
             SQLiteCommand insertQuery = new SQLiteCommand("insert into person values (@fname, @gname, @height, @gender, @eyecolor)", sqlite);
             insertQuery.Parameters.AddWithValue("@fname", p.SurName);
             insertQuery.Parameters.AddWithValue("@gname", p.GivenName);
-            //SQLiteParameter param = new SQLiteParameter("@height", p.Height);
-            //param.SourceColumn = "height";
+            SQLiteParameter param = new SQLiteParameter("@height", p.Height);
+            param.SourceColumn = "height";
             //param.Precision = 18;
             //param.Scale = 2;
-            // insertQuery.Parameters.Add(param);
-            insertQuery.Parameters.AddWithValue("@height", p.Height);
+             insertQuery.Parameters.Add(param);
+            //insertQuery.Parameters.AddWithValue("@height", p.Height);
             insertQuery.Parameters.AddWithValue("@gender", p.Gender);
             insertQuery.Parameters.AddWithValue("@eyecolor", p.EyeColor);
             try
