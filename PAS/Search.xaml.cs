@@ -30,7 +30,31 @@ namespace PAS
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             SqliteDataAccess sqlData = new SqliteDataAccess();
-           // sqlData.ReadData();
+
+            string StringGender = null;
+            string StringEyeColor = null;
+            decimal DecHeight = 0;
+
+            if (GenderCombo.SelectedItem != null)
+            {
+                ComboBoxItem GenderItem = (ComboBoxItem)GenderCombo.SelectedItem;
+                 StringGender = GenderItem.Content.ToString();
+            }
+
+
+            if (EyeColorCombo.SelectedItem != null)
+            {
+                ComboBoxItem EyeItem = (ComboBoxItem)EyeColorCombo.SelectedItem;
+                 StringEyeColor = EyeItem.Content.ToString();
+            }
+
+            if(HeightInput.Text != "")
+            {
+                 DecHeight = decimal.Parse(HeightInput.Text);
+            }
+
+
+            sqlData.ReadData(FNameInput.Text, SurnameInput.Text, DecHeight, StringEyeColor, StringGender);
             /*
             if(FNameInput.Text != null && FNameInput.Text.Length >=3)
             {
@@ -64,7 +88,7 @@ namespace PAS
         private void Reset_Button_Click(object sender, RoutedEventArgs e)
         {
             FNameInput.Text = "";
-            FSurnameInput.Text = "";
+            SurnameInput.Text = "";
         }
     }
 }

@@ -42,13 +42,23 @@ namespace PAS
             return Rowcount;
         }
 
-        /*
-        public void ReadData()
+        
+        public void ReadData(string surname, string givename, decimal height, string eyecolor, string gender)
         {
             SQLiteDataReader sqlite_datareader;
             SQLiteCommand sqlite_cmd;
+
             sqlite_cmd = sqlite.CreateCommand();
             sqlite_cmd.CommandText = "select * from person";
+
+            if (surname.Length > 0)
+            {
+                sqlite_cmd.CommandText += " where  SurName like '%" + surname + "%'";
+                bool surTrue = true;
+            }
+            
+
+
 
             sqlite_datareader = sqlite_cmd.ExecuteReader();
             while (sqlite_datareader.Read())
@@ -59,7 +69,7 @@ namespace PAS
             sqlite.Close();
         }
 
-        */
+        
 
 
 
