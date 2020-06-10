@@ -68,7 +68,7 @@ namespace PAS
             return Rowcount;
         }
 
-        
+        /*
         public void ReadData(string surname, string givename, decimal height, string eyecolor, string gender)
         {
             SQLiteDataReader sqlite_datareader;
@@ -83,7 +83,7 @@ namespace PAS
                // bool surTrue = true;
             }
             
-
+        
 
 
             sqlite_datareader = sqlite_cmd.ExecuteReader();
@@ -98,15 +98,15 @@ namespace PAS
             }
             sqlite.Close();
         }
+        */
 
-        /*
         public DataTable DataTableQuery(String QueryString)
         {
             DataTable Table = null;
             if (Conn1 != null)
             {
-                SQLiteCommand Command = new SQLiteCommand(QueryString, Conn1);
-                MySqlDataAdapter Adapter = new MySqlDataAdapter(Command);
+                SQLiteCommand Command = new SQLiteCommand(QueryString, sqlite);
+                SQLiteDataAdapter Adapter = new SQLiteDataAdapter(Command);
                 Table = new DataTable();
                 try
                 {
@@ -114,17 +114,42 @@ namespace PAS
 
 
                 }
-                catch (MySqlException Ex)
+                catch (SQLiteException Ex)
                 {
                     Console.WriteLine(Ex.Message);
                 }
 
             }
 
+            return Table;
+        }
+
+        public SQLiteDataReader Query(string QueryString)
+        {
+
+
+            SQLiteDataReader Reader = null;
+            if (Conn1 != null)
+            {
+
+                SQLiteCommand Command = new SQLiteCommand(QueryString, Conn1);
+
+
+                try
+                {
+                    Reader = Command.ExecuteReader();
+                }
+                catch (SQLiteException Ex)
+                {
+                    Console.Error.WriteLine("Error executing query");
+                    Console.WriteLine(Ex.Message);
+                }
+            }
+            return Reader;
+        }
 
 
 
-        */
 
 
 
@@ -133,8 +158,7 @@ namespace PAS
 
 
 
-
-            public void AddPerson(Person p)
+        public void AddPerson(Person p)
         {
 
             SQLiteCommand insertQuery = new SQLiteCommand("insert into person values (@fname, @gname, @height, @gender, @eyecolor)", sqlite);

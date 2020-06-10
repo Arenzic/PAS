@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -53,8 +54,7 @@ namespace PAS
                  DecHeight = decimal.Parse(HeightInput.Text);
             }
 
-
-           sqlData.ReadData(FNameInput.Text, SurnameInput.Text, DecHeight, StringEyeColor, StringGender);
+           //sqlData.ReadData(FNameInput.Text, SurnameInput.Text, DecHeight, StringEyeColor, StringGender);
             /*
             if(FNameInput.Text != null && FNameInput.Text.Length >=3)
             {
@@ -97,6 +97,22 @@ namespace PAS
 
         }
 
+        private void SearchResults_Loaded(object sender, RoutedEventArgs e)
+        {
+            SqliteDataAccess sqlData = new SqliteDataAccess();
+            DataTable Table = sqlData.DataTableQuery("select * from person");
+            SearchResults.ItemsSource = Table.DefaultView;
+        }
 
+        private void SearchResults_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            DataRowView select = SearchResults.SelectedItem as DataRowView;
+
+            String id = select.Row[0].ToString();
+
+            UserInfo ui = new UserInfo(select, id);
+            ui.Show();
+            this.Close();
+        }
     }
 }
