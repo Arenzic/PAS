@@ -53,8 +53,9 @@ namespace PAS
                  DecHeight = decimal.Parse(HeightInput.Text);
             }
 
+            SearchList.
 
-            sqlData.ReadData(FNameInput.Text, SurnameInput.Text, DecHeight, StringEyeColor, StringGender);
+           sqlData.ReadData(FNameInput.Text, SurnameInput.Text, DecHeight, StringEyeColor, StringGender);
             /*
             if(FNameInput.Text != null && FNameInput.Text.Length >=3)
             {
@@ -90,5 +91,13 @@ namespace PAS
             FNameInput.Text = "";
             SurnameInput.Text = "";
         }
+
+        public void tempAddToList(string items)
+        {
+
+
+        }
+
+
     }
 }

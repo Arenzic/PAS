@@ -25,11 +25,6 @@
         <TextBlock HorizontalAlignment="Left" Margin="203,215,0,0" TextWrapping="Wrap" Text="Gender" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="416,87,0,0" TextWrapping="Wrap" Text="Height" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="416,149,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Eye Colour"/><LineBreak/><Run Text=""/></TextBlock>
-        <ListView x:Name="searchResults" HorizontalAlignment="Left" Height="112" Margin="203,286,0,0" VerticalAlignment="Top" Width="464">
-            <ListView.View>
-                <GridView/>
-            </ListView.View>
-        </ListView>
         <Button Content="Add Patient" HorizontalAlignment="Left" Margin="0,214,0,0" VerticalAlignment="Top" Width="168" Height="44" Background="#FF425563" Foreground="White" BorderBrush="{x:Null}" FontFamily="Gen" Click="AddPatient_Button"/>
         <Button x:Name="ResetButton" Content="Reset" HorizontalAlignment="Left" Margin="544,235,0,0" VerticalAlignment="Top" Width="114" Height="23" Background="#FF425563" Foreground="White" BorderBrush="{x:Null}" FontFamily="Gen" Click="Reset_Button_Click"/>
         <ComboBox x:Name="EyeColorCombo" HorizontalAlignment="Left" Margin="410,171,0,0" VerticalAlignment="Top" Width="120">
@@ -43,5 +38,8 @@
             <ComboBoxItem Background="{x:Null}" Content="Female"/>
         </ComboBox>
         <TextBox x:Name="HeightInput" HorizontalAlignment="Left" Height="23" Margin="410,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <DataGrid x:Name="SearchResults" HorizontalAlignment="Left" Height="110" Margin="203,285,0,0" VerticalAlignment="Top" Width="455"/>
+
+
     </Grid>
 </Window>

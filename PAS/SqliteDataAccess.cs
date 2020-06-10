@@ -64,12 +64,41 @@ namespace PAS
             while (sqlite_datareader.Read())
             {
                 string myreader = sqlite_datareader.GetString(0);
-                Console.WriteLine(myreader);
+                Person p = new Person();
+                p.SurName = myreader;
+                
+                Search search = new Search();
+                search.tempAddToList(myreader);
             }
             sqlite.Close();
         }
 
-        
+        /*
+        public DataTable DataTableQuery(String QueryString)
+        {
+            DataTable Table = null;
+            if (Conn1 != null)
+            {
+                SQLiteCommand Command = new SQLiteCommand(QueryString, Conn1);
+                MySqlDataAdapter Adapter = new MySqlDataAdapter(Command);
+                Table = new DataTable();
+                try
+                {
+                    Adapter.Fill(Table);
+
+
+                }
+                catch (MySqlException Ex)
+                {
+                    Console.WriteLine(Ex.Message);
+                }
+
+            }
+
+
+
+
+        */
 
 
 
@@ -79,7 +108,7 @@ namespace PAS
 
 
 
-        public void AddPerson(Person p)
+            public void AddPerson(Person p)
         {
 
             SQLiteCommand insertQuery = new SQLiteCommand("insert into person values (@fname, @gname, @height, @gender, @eyecolor)", sqlite);
