@@ -53,7 +53,6 @@ namespace PAS
                  DecHeight = decimal.Parse(HeightInput.Text);
             }
 
-            SearchList.
 
            sqlData.ReadData(FNameInput.Text, SurnameInput.Text, DecHeight, StringEyeColor, StringGender);
             /*

@@ -24,7 +24,33 @@ namespace PAS
         {
             //connection to my pas-database
             sqlite = new SQLiteConnection("Data Source=pas-database.db");
-            sqlite.Open();
+            Connect();
+
+        }
+
+        public SQLiteConnection Conn1 { get => sqlite; set => sqlite = value; }
+
+        public void Connect()
+        {
+
+
+            string ConnectionString = "Data Source=pas-database.db";
+            Conn1 = new SQLiteConnection(ConnectionString);
+            try
+            {
+                Conn1.Open();
+            }
+            catch (SQLiteException Ex)
+            {
+                // when breaks
+                Console.WriteLine(" Database connection Failed.");
+                Console.WriteLine(Ex.Message);
+            }
+            finally
+            {
+                if (Conn1.State == System.Data.ConnectionState.Closed)
+                    Conn1 = null;
+            }
 
         }
 
@@ -54,7 +80,7 @@ namespace PAS
             if (surname.Length > 0)
             {
                 sqlite_cmd.CommandText += " where  SurName like '%" + surname + "%'";
-                bool surTrue = true;
+               // bool surTrue = true;
             }
             
 
