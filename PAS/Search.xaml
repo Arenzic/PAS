@@ -38,7 +38,7 @@
             <ComboBoxItem Background="{x:Null}" Content="Female"/>
         </ComboBox>
         <TextBox x:Name="HeightInput" HorizontalAlignment="Left" Height="23" Margin="203,290,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <DataGrid x:Name="SearchResults" HorizontalAlignment="Left" Height="264" Margin="359,102,0,0" VerticalAlignment="Top" Width="308" Loaded="SearchResults_Loaded" MouseDoubleClick="SearchResults_MouseDoubleClick" />
+        <DataGrid x:Name="SearchResults" HorizontalAlignment="Left" Height="264" Margin="359,102,0,0" VerticalAlignment="Top" Width="308" MouseDoubleClick="SearchResults_MouseDoubleClick" />
 
 
     </Grid>

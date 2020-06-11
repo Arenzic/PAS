@@ -21,8 +21,8 @@
         <Button Content="Add" HorizontalAlignment="Left" Margin="554,351,0,0" VerticalAlignment="Top" Width="114" Height="23" Background="#FF425563" Foreground="White" BorderBrush="{x:Null}" FontFamily="Gen" Click="Add_Button_Click"/>
         <TextBox x:Name="SurnameInput" HorizontalAlignment="Left" Height="23" Margin="204,210,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <ComboBox x:Name="GenderCombo" HorizontalAlignment="Left" Margin="204,276,0,0" VerticalAlignment="Top" Width="120">
-            <ComboBoxItem Background="{x:Null}" Content="Male"/>
-            <ComboBoxItem Background="{x:Null}" Content="Female"/>
+            <ComboBoxItem Background="{x:Null}" Content="male"/>
+            <ComboBoxItem Background="{x:Null}" Content="female"/>
         </ComboBox>
         <TextBlock HorizontalAlignment="Left" Margin="204,127,0,0" TextWrapping="Wrap" Text="First Name" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="204,189,0,0" TextWrapping="Wrap" Text="Surname" VerticalAlignment="Top"/>

@@ -22,9 +22,22 @@ namespace PAS
     /// </summary>
     public partial class Search : Window
     {
-        public Search()
+        public Search(string query)
         {
             InitializeComponent();
+
+            SqliteDataAccess sqlData = new SqliteDataAccess();
+            if (query == null)
+            {
+                DataTable Table = sqlData.DataTableQuery("SELECT * FROM person");
+                SearchResults.ItemsSource = Table.DefaultView;
+            }
+            else
+            {
+                DataTable Table = sqlData.DataTableQuery(query);
+                SearchResults.ItemsSource = Table.DefaultView;
+            }
+
         }
 
 
@@ -35,6 +48,7 @@ namespace PAS
             string StringGender = null;
             string StringEyeColor = null;
             decimal DecHeight = 0;
+            
 
             if (GenderCombo.SelectedItem != null)
             {
@@ -91,18 +105,17 @@ namespace PAS
             SurnameInput.Text = "";
         }
 
-        public void tempAddToList(string items)
-        {
 
 
-        }
-
+        /*
         private void SearchResults_Loaded(object sender, RoutedEventArgs e)
         {
             SqliteDataAccess sqlData = new SqliteDataAccess();
+
             DataTable Table = sqlData.DataTableQuery("select * from person");
             SearchResults.ItemsSource = Table.DefaultView;
         }
+        */
 
         private void SearchResults_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {

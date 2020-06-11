@@ -32,9 +32,12 @@ namespace PAS
             
             SqliteDataAccess sqldataConn = new SqliteDataAccess();
             int people = sqldataConn.LoadPerson();
+            int inPatient = sqldataConn.LoadInPatients();
             //need to use property only (TextboxText), as i cannot bind with a variable.
             totalPersons.DataContext = new TextboxText() { textdata = people };
-          
+
+            totalInPatients.DataContext = new TextboxText() { textdata = inPatient };
+
         }
 
         private int LoadPatientInfo()
@@ -57,7 +60,8 @@ namespace PAS
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            Search se = new Search();
+            String query = null;
+            Search se = new Search(query);
             se.Show();
             this.Close();
         }
@@ -74,6 +78,14 @@ namespace PAS
         {
             AddPatient AddPat = new AddPatient();
             AddPat.Show();
+            this.Close();
+        }
+
+        private void Inpatients_Button(object sender, RoutedEventArgs e)
+        {
+            string query = "SELECT * FROM person WHERE status = 'ICU' OR status = 'Ward'";
+            Search se = new Search(query);
+            se.Show();
             this.Close();
         }
     }

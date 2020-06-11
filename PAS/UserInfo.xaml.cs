@@ -100,12 +100,13 @@ namespace PAS
 
 
 
-            string query = "DELETE FROM person WHERE id = " + userid2 + ";";
+            string queryDelete = "DELETE FROM person WHERE id = " + userid2 + ";";
 
-            sqldata.Query(query);
+            sqldata.Query(queryDelete);
             System.Windows.MessageBox.Show("Person deleted.");
 
-            Search srch = new Search();
+            string query = null;
+            Search srch = new Search(query);
             srch.Show();
             this.Close();
         }

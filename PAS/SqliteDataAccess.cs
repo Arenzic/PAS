@@ -60,7 +60,19 @@ namespace PAS
             {
             int Rowcount = 0;
             SQLiteCommand cmd = new SQLiteCommand(sqlite);
-            cmd.CommandText = "select count (SurName) from person";
+            cmd.CommandText = "SELECT COUNT (id) FROM person";
+
+            Rowcount = Convert.ToInt32(cmd.ExecuteScalar());
+
+
+            return Rowcount;
+        }
+
+        public int LoadInPatients()
+        {
+            int Rowcount = 0;
+            SQLiteCommand cmd = new SQLiteCommand(sqlite);
+            cmd.CommandText = "SELECT COUNT (id) FROM person WHERE status = 'ICU' OR status = 'Ward'";
 
             Rowcount = Convert.ToInt32(cmd.ExecuteScalar());
 
@@ -186,21 +198,22 @@ namespace PAS
         public void AddPerson(Person p)
         {
 
-            SQLiteCommand insertQuery = new SQLiteCommand("insert into person (SurName, GivenName, Height, Gender, EyeColor)values (@fname, @gname, @height, @gender, @eyecolor)", sqlite);
-            insertQuery.Parameters.AddWithValue("@fname", p.SurName);
-            insertQuery.Parameters.AddWithValue("@gname", p.GivenName);
-            SQLiteParameter param = new SQLiteParameter("@height", p.Height);
-            param.SourceColumn = "height";
-            //param.Precision = 18;
-            //param.Scale = 2;
-             insertQuery.Parameters.Add(param);
-            //insertQuery.Parameters.AddWithValue("@height", p.Height);
-            insertQuery.Parameters.AddWithValue("@gender", p.Gender);
-            insertQuery.Parameters.AddWithValue("@eyecolor", p.EyeColor);
+            SQLiteCommand insertQuery = new SQLiteCommand("insert into person (SurName, GivenName, Height, Gender, EyeColor)values (@sname, @gname, @height, @gender, @eyecolor)", sqlite);
+            
             try
             {
-                
-                int i=insertQuery.ExecuteNonQuery();
+                insertQuery.Parameters.AddWithValue("@sname", p.SurName);
+                insertQuery.Parameters.AddWithValue("@gname", p.GivenName);
+                SQLiteParameter param = new SQLiteParameter("@height", p.Height);
+                param.SourceColumn = "height";
+                //param.Precision = 18;
+                //param.Scale = 2;
+                insertQuery.Parameters.Add(param);
+                //insertQuery.Parameters.AddWithValue("@height", p.Height);
+                insertQuery.Parameters.AddWithValue("@gender", p.Gender);
+                insertQuery.Parameters.AddWithValue("@eyecolor", p.EyeColor);
+
+                insertQuery.ExecuteNonQuery();
                 insertQuery.Connection = sqlite;
                 System.Windows.MessageBox.Show("Person Added.");
                 sqlite.Close();
