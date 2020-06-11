@@ -16,7 +16,6 @@
         <Label Content="PAS" HorizontalAlignment="Left" Margin="75,15,0,0" VerticalAlignment="Top" Foreground="White" FontSize="30" FontFamily="Gen"/>
         <Label Content="Profile" HorizontalAlignment="Left" Margin="186,15,0,0" VerticalAlignment="Top" Foreground="Black" FontSize="30" FontFamily="Gen" Background="White"/>
         <Image HorizontalAlignment="Left" Height="42" Margin="19,15,0,0" VerticalAlignment="Top" Width="37" Source="Icons/health.png"/>
-        <Image HorizontalAlignment="Left" Height="40" Margin="635,21,0,0" VerticalAlignment="Top" Width="49" Source="User-icon.png"/>
         <TextBox x:Name="FNameInput" HorizontalAlignment="Left" Height="23" Margin="203,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="UpdateButton" Content="Update" HorizontalAlignment="Left" Margin="553,387,0,0" VerticalAlignment="Top" Width="114" Height="23" Background="#FF425563" Foreground="White" BorderBrush="{x:Null}" FontFamily="Gen" Click="Update_Button_Click"/>
         <TextBox x:Name="SurnameInput" HorizontalAlignment="Left" Height="23" Margin="203,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
@@ -34,18 +33,18 @@
             <ComboBoxItem Content="blue"/>
         </ComboBox>
         <ComboBox x:Name="GenderCombo" HorizontalAlignment="Left" Margin="203,236,0,0" VerticalAlignment="Top" Width="120">
-            <ComboBoxItem Background="{x:Null}" Content="Male"/>
-            <ComboBoxItem Background="{x:Null}" Content="Female"/>
+            <ComboBoxItem Background="{x:Null}" Content="male"/>
+            <ComboBoxItem Background="{x:Null}" Content="female"/>
         </ComboBox>
         <TextBox x:Name="HeightInput" HorizontalAlignment="Left" Height="23" Margin="203,290,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBlock HorizontalAlignment="Left" Margin="438,87,0,0" TextWrapping="Wrap" Text="Status" VerticalAlignment="Top"/>
         <ComboBox x:Name="StatusCombo" HorizontalAlignment="Left" Margin="438,108,0,0" VerticalAlignment="Top" Width="120">
-            <ComboBoxItem Background="{x:Null}" Content="Male"/>
-            <ComboBoxItem Background="{x:Null}" Content="Female"/>
+            <ComboBoxItem Background="{x:Null}" Content="Ward"/>
+            <ComboBoxItem Background="{x:Null}" Content="ICU"/>
         </ComboBox>
-        <TextBlock HorizontalAlignment="Left" Margin="575,15,0,0" TextWrapping="Wrap" Text="ID" VerticalAlignment="Top"/>
         <Label x:Name="setId" Content="" HorizontalAlignment="Left" Margin="689,17,-5,0" VerticalAlignment="Top"/>
         <Label x:Name="setId1" Content="" HorizontalAlignment="Left" Margin="575,36,0,0" VerticalAlignment="Top"/>
+        <Image HorizontalAlignment="Left" Height="54" Margin="617,17,0,0" VerticalAlignment="Top" Width="50" Source="User-icon.png"/>
 
     </Grid>
 </Window>

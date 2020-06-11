@@ -23,13 +23,14 @@ namespace PAS
     public partial class UserInfo : Window
     {
         private SqliteDataAccess sqldata = new SqliteDataAccess();
+        String userid2 = "";
 
         public UserInfo(DataRowView source, String userId)
         {
             InitializeComponent();
             
 
-            string queryString = "Select * from person where id = " + userId + ";";
+            string queryString = "SELECT * FROM person WHERE id = " + userId + ";";
 
             SQLiteDataReader reader = sqldata.Query(queryString);
             if(reader.Read())
@@ -42,6 +43,10 @@ namespace PAS
                 //StatusCombo.SelectedIndex = (int)reader.GetValue(3);
                 //EyeColorCombo.SelectedIndex = (int)reader.GetValue(6);
             }
+
+            reader.Close();
+
+            userid2 = userId;
         }
 
         private void Dashboard_Button(object sender, RoutedEventArgs e)
@@ -63,7 +68,7 @@ namespace PAS
 
         private void Update_Button_Click(object sender, RoutedEventArgs e)
         {
-            int userId = (int)setId.Content;
+            
             string surname = SurnameInput.Text;
             string givenname = FNameInput.Text;
             decimal height = decimal.Parse(HeightInput.Text);
@@ -76,11 +81,11 @@ namespace PAS
             string eyecolor = EyeItem.Content.ToString();
 
             ComboBoxItem StatusItem = (ComboBoxItem)StatusCombo.SelectedItem;
-            string status = EyeItem.Content.ToString();
+            string status = StatusItem.Content.ToString();
 
 
 
-            String query = "insert into person (SurName, GivenName, Height, Gender, status, EyeColor) VALUES (@surname, @givenname, @height, @gender, @status, @eyecolor) where id = " + userId + ";";
+            String query = "UPDATE person SET SurName = @surname, GivenName = givenname, Height = @height, Gender = @gender, status = @status, EyeColor = @eyecolor WHERE id = " + userid2 + ";";
             sqldata.Update(query, surname, givenname, height, gender, status, eyecolor);
 
             System.Windows.MessageBox.Show("Details Updated.");
@@ -88,7 +93,21 @@ namespace PAS
 
         private void Delete_Button_Click(object sender, RoutedEventArgs e)
         {
+            MessageBoxResult r = System.Windows.MessageBox.Show("Are you sure you want to delete this contact?", "Delete", MessageBoxButton.YesNo);
 
+            if (r.Equals(MessageBoxResult.No))
+                return;
+
+
+
+            string query = "DELETE FROM person WHERE id = " + userid2 + ";";
+
+            sqldata.Query(query);
+            System.Windows.MessageBox.Show("Person deleted.");
+
+            Search srch = new Search();
+            srch.Show();
+            this.Close();
         }
     }
 }

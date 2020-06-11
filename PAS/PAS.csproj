@@ -238,6 +238,9 @@
     <Resource Include="Icons\Circle-add-icon.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Icons\User-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="User-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
