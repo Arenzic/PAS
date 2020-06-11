@@ -151,7 +151,32 @@ namespace PAS
 
 
 
+        public void Update(string AddString, string SurName, string GivenName, decimal Height, string gender, string status, string EyeColor)
+        {
+            if (sqlite != null)
+            {
 
+                SQLiteCommand Command = new SQLiteCommand(AddString, sqlite);
+
+                Command.Parameters.AddWithValue("@surname", SurName);
+                Command.Parameters.AddWithValue("@givenname", GivenName);
+                Command.Parameters.AddWithValue("@height", Height);
+                Command.Parameters.AddWithValue("@gender", gender);
+                Command.Parameters.AddWithValue("@status", status);
+                Command.Parameters.AddWithValue("@eyecolor", EyeColor);
+
+                try
+                {
+
+                    Command.ExecuteNonQuery();
+
+                }
+                catch (SQLiteException E)
+                {
+                    Console.Error.WriteLine(E.Message);
+                }
+            }
+        }
 
 
 
@@ -161,7 +186,7 @@ namespace PAS
         public void AddPerson(Person p)
         {
 
-            SQLiteCommand insertQuery = new SQLiteCommand("insert into person values (@fname, @gname, @height, @gender, @eyecolor)", sqlite);
+            SQLiteCommand insertQuery = new SQLiteCommand("insert into person (SurName, GivenName, Height, Gender, EyeColor)values (@fname, @gname, @height, @gender, @eyecolor)", sqlite);
             insertQuery.Parameters.AddWithValue("@fname", p.SurName);
             insertQuery.Parameters.AddWithValue("@gname", p.GivenName);
             SQLiteParameter param = new SQLiteParameter("@height", p.Height);

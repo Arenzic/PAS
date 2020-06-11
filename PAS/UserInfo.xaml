@@ -14,7 +14,7 @@
         <Button Content="In Patients" HorizontalAlignment="Left" Margin="0,126,0,0" VerticalAlignment="Top" Width="168" Height="44" Background="#FF425563" Foreground="White" BorderBrush="{x:Null}" FontFamily="Gen"/>
         <Button Content="All Patients" HorizontalAlignment="Left" Margin="0,168,0,0" VerticalAlignment="Top" Width="168" Height="44" Background="#FF425563" Foreground="White" BorderBrush="{x:Null}" FontFamily="Gen"/>
         <Label Content="PAS" HorizontalAlignment="Left" Margin="75,15,0,0" VerticalAlignment="Top" Foreground="White" FontSize="30" FontFamily="Gen"/>
-        <Label Content="Search" HorizontalAlignment="Left" Margin="186,15,0,0" VerticalAlignment="Top" Foreground="Black" FontSize="30" FontFamily="Gen" Background="White"/>
+        <Label Content="Profile" HorizontalAlignment="Left" Margin="186,15,0,0" VerticalAlignment="Top" Foreground="Black" FontSize="30" FontFamily="Gen" Background="White"/>
         <Image HorizontalAlignment="Left" Height="42" Margin="19,15,0,0" VerticalAlignment="Top" Width="37" Source="Icons/health.png"/>
         <Image HorizontalAlignment="Left" Height="40" Margin="635,21,0,0" VerticalAlignment="Top" Width="49" Source="User-icon.png"/>
         <TextBox x:Name="FNameInput" HorizontalAlignment="Left" Height="23" Margin="203,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
@@ -43,6 +43,9 @@
             <ComboBoxItem Background="{x:Null}" Content="Male"/>
             <ComboBoxItem Background="{x:Null}" Content="Female"/>
         </ComboBox>
+        <TextBlock HorizontalAlignment="Left" Margin="575,15,0,0" TextWrapping="Wrap" Text="ID" VerticalAlignment="Top"/>
+        <Label x:Name="setId" Content="" HorizontalAlignment="Left" Margin="689,17,-5,0" VerticalAlignment="Top"/>
+        <Label x:Name="setId1" Content="" HorizontalAlignment="Left" Margin="575,36,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

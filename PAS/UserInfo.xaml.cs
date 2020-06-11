@@ -9,6 +9,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -22,20 +23,23 @@ namespace PAS
     public partial class UserInfo : Window
     {
         private SqliteDataAccess sqldata = new SqliteDataAccess();
+
         public UserInfo(DataRowView source, String userId)
         {
             InitializeComponent();
+            
 
             string queryString = "Select * from person where id = " + userId + ";";
 
             SQLiteDataReader reader = sqldata.Query(queryString);
             if(reader.Read())
             {
+                setId.Content = reader.GetInt16(0);
                 FNameInput.Text = reader.GetString(1);
                 SurnameInput.Text = reader.GetString(2);
-                GenderCombo
+                //GenderCombo.SelectedItem = reader.GetString(3);
                 //Height.Text = reader.GetInt32(4);
-                //StatusCombo.SelectedIndex = (int)reader.GetValue(5);
+                //StatusCombo.SelectedIndex = (int)reader.GetValue(3);
                 //EyeColorCombo.SelectedIndex = (int)reader.GetValue(6);
             }
         }
@@ -59,7 +63,27 @@ namespace PAS
 
         private void Update_Button_Click(object sender, RoutedEventArgs e)
         {
+            int userId = (int)setId.Content;
+            string surname = SurnameInput.Text;
+            string givenname = FNameInput.Text;
+            decimal height = decimal.Parse(HeightInput.Text);
+            
 
+            ComboBoxItem GenderItem = (ComboBoxItem)GenderCombo.SelectedItem;
+            string gender = GenderItem.Content.ToString();
+
+            ComboBoxItem EyeItem = (ComboBoxItem)EyeColorCombo.SelectedItem;
+            string eyecolor = EyeItem.Content.ToString();
+
+            ComboBoxItem StatusItem = (ComboBoxItem)StatusCombo.SelectedItem;
+            string status = EyeItem.Content.ToString();
+
+
+
+            String query = "insert into person (SurName, GivenName, Height, Gender, status, EyeColor) VALUES (@surname, @givenname, @height, @gender, @status, @eyecolor) where id = " + userId + ";";
+            sqldata.Update(query, surname, givenname, height, gender, status, eyecolor);
+
+            System.Windows.MessageBox.Show("Details Updated.");
         }
 
         private void Delete_Button_Click(object sender, RoutedEventArgs e)
