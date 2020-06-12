@@ -11,8 +11,8 @@
         <Rectangle Fill="White" HorizontalAlignment="Left" Height="82" VerticalAlignment="Top" Width="694"/>
         <Rectangle Fill="#FF005EB8" HorizontalAlignment="Left" Height="82" Stroke="Black" VerticalAlignment="Top" Width="168"/>
         <Button Content="Dashboard" HorizontalAlignment="Left" Margin="0,82,0,0" VerticalAlignment="Top" Width="168" Height="44" Background="#FF425563" Foreground="White" BorderBrush="{x:Null}" FontFamily="Gen" Click="Dashboard_Button"/>
-        <Button Content="In Patients" HorizontalAlignment="Left" Margin="0,126,0,0" VerticalAlignment="Top" Width="168" Height="44" Background="#FF425563" Foreground="White" BorderBrush="{x:Null}" FontFamily="Gen"/>
-        <Button Content="All Patients" HorizontalAlignment="Left" Margin="0,168,0,0" VerticalAlignment="Top" Width="168" Height="44" Background="#FF425563" Foreground="White" BorderBrush="{x:Null}" FontFamily="Gen"/>
+        <Button Content="In Patients" HorizontalAlignment="Left" Margin="0,126,0,0" VerticalAlignment="Top" Width="168" Height="44" Background="#FF425563" Foreground="White" BorderBrush="{x:Null}" FontFamily="Gen" Click="Button_Click_1"/>
+        <Button Content="All Patients" HorizontalAlignment="Left" Margin="0,168,0,0" VerticalAlignment="Top" Width="168" Height="44" Background="#FF425563" Foreground="White" BorderBrush="{x:Null}" FontFamily="Gen" Click="Button_Click"/>
         <Label Content="PAS" HorizontalAlignment="Left" Margin="75,15,0,0" VerticalAlignment="Top" Foreground="White" FontSize="30" FontFamily="Gen"/>
         <Label Content="Profile" HorizontalAlignment="Left" Margin="186,15,0,0" VerticalAlignment="Top" Foreground="Black" FontSize="30" FontFamily="Gen" Background="White"/>
         <Image HorizontalAlignment="Left" Height="42" Margin="19,15,0,0" VerticalAlignment="Top" Width="37" Source="Icons/health.png"/>

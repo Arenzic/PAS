@@ -127,5 +127,13 @@ namespace PAS
             ui.Show();
             this.Close();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            string query = "SELECT * FROM person WHERE status = 'ICU' OR status = 'Ward'";
+            Search se = new Search(query);
+            se.Show();
+            this.Close();
+        }
     }
 }

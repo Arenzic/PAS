@@ -68,11 +68,23 @@ namespace PAS
             return Rowcount;
         }
 
-        public int LoadInPatients()
+        public int LoadWardPatients()
         {
             int Rowcount = 0;
             SQLiteCommand cmd = new SQLiteCommand(sqlite);
-            cmd.CommandText = "SELECT COUNT (id) FROM person WHERE status = 'ICU' OR status = 'Ward'";
+            cmd.CommandText = "SELECT COUNT (id) FROM person WHERE status = 'Ward'";
+
+            Rowcount = Convert.ToInt32(cmd.ExecuteScalar());
+
+
+            return Rowcount;
+        }
+
+        public int LoadIcuPatients()
+        {
+            int Rowcount = 0;
+            SQLiteCommand cmd = new SQLiteCommand(sqlite);
+            cmd.CommandText = "SELECT COUNT (id) FROM person WHERE status = 'ICU'";
 
             Rowcount = Convert.ToInt32(cmd.ExecuteScalar());
 

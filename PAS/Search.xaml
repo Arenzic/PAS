@@ -5,28 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PAS"
         mc:Ignorable="d"
-        Title="Patient Administration System" Height="450" Width="700" WindowStartupLocation="CenterScreen">
+        Title="Patient Administration System" Height="450" Width="750" WindowStartupLocation="CenterScreen">
     <Grid Background="#FFE8EDEE" >
         <Rectangle Fill="#FF425563" HorizontalAlignment="Left" Height="421" Stroke="Black" VerticalAlignment="Top" Width="168"/>
-        <Rectangle Fill="White" HorizontalAlignment="Left" Height="82" VerticalAlignment="Top" Width="694"/>
+        <Rectangle Fill="White" HorizontalAlignment="Left" Height="82" VerticalAlignment="Top" Width="744"/>
         <Rectangle Fill="#FF005EB8" HorizontalAlignment="Left" Height="82" Stroke="Black" VerticalAlignment="Top" Width="168"/>
         <Button Content="Dashboard" HorizontalAlignment="Left" Margin="0,82,0,0" VerticalAlignment="Top" Width="168" Height="44" Background="#FF425563" Foreground="White" BorderBrush="{x:Null}" FontFamily="Gen" Click="Dashboard_Button"/>
-        <Button Content="In Patients" HorizontalAlignment="Left" Margin="0,126,0,0" VerticalAlignment="Top" Width="168" Height="44" Background="#FF425563" Foreground="White" BorderBrush="{x:Null}" FontFamily="Gen"/>
-        <Button Content="All Patients" HorizontalAlignment="Left" Margin="0,168,0,0" VerticalAlignment="Top" Width="168" Height="44" Background="#FF425563" Foreground="White" BorderBrush="{x:Null}" FontFamily="Gen"/>
+        <Button Content="In Patients" HorizontalAlignment="Left" Margin="0,126,0,0" VerticalAlignment="Top" Width="168" Height="44" Background="#FF425563" Foreground="White" BorderBrush="{x:Null}" FontFamily="Gen" Click="Button_Click"/>
         <Label Content="PAS" HorizontalAlignment="Left" Margin="75,15,0,0" VerticalAlignment="Top" Foreground="White" FontSize="30" FontFamily="Gen"/>
         <Label Content="Search" HorizontalAlignment="Left" Margin="186,15,0,0" VerticalAlignment="Top" Foreground="Black" FontSize="30" FontFamily="Gen" Background="White"/>
         <Image HorizontalAlignment="Left" Height="42" Margin="19,15,0,0" VerticalAlignment="Top" Width="37" Source="Icons/health.png"/>
-        <Image HorizontalAlignment="Left" Height="40" Margin="635,21,0,0" VerticalAlignment="Top" Width="49" Source="Icons/Zoom-icon.png"/>
+        <Image HorizontalAlignment="Left" Height="40" Margin="685,21,0,0" VerticalAlignment="Top" Width="49" Source="Icons/Zoom-icon.png"/>
         <TextBox x:Name="FNameInput" HorizontalAlignment="Left" Height="23" Margin="203,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Search" HorizontalAlignment="Left" Margin="553,387,0,0" VerticalAlignment="Top" Width="114" Height="23" Background="#FF425563" Foreground="White" BorderBrush="{x:Null}" FontFamily="Gen" Click="Button_Click_1"/>
+        <Button Content="Search" HorizontalAlignment="Left" Margin="604,387,0,0" VerticalAlignment="Top" Width="114" Height="23" Background="#FF425563" Foreground="White" BorderBrush="{x:Null}" FontFamily="Gen" Click="Button_Click_1"/>
         <TextBox x:Name="SurnameInput" HorizontalAlignment="Left" Height="23" Margin="203,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBlock HorizontalAlignment="Left" Margin="203,87,0,0" TextWrapping="Wrap" Text="First Name" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="203,149,0,0" TextWrapping="Wrap" Text="Surname" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="203,215,0,0" TextWrapping="Wrap" Text="Gender" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="209,274,0,0" TextWrapping="Wrap" Text="Height" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="209,334,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Eye Colour"/><LineBreak/><Run Text=""/></TextBlock>
-        <Button Content="Add Patient" HorizontalAlignment="Left" Margin="0,214,0,0" VerticalAlignment="Top" Width="168" Height="44" Background="#FF425563" Foreground="White" BorderBrush="{x:Null}" FontFamily="Gen" Click="AddPatient_Button"/>
-        <Button x:Name="ResetButton" Content="Reset" HorizontalAlignment="Left" Margin="426,387,0,0" VerticalAlignment="Top" Width="114" Height="23" Background="#FF425563" Foreground="White" BorderBrush="{x:Null}" FontFamily="Gen" Click="Reset_Button_Click"/>
+        <Button Content="Add Patient" HorizontalAlignment="Left" Margin="0,167,0,0" VerticalAlignment="Top" Width="168" Height="44" Background="#FF425563" Foreground="White" BorderBrush="{x:Null}" FontFamily="Gen" Click="AddPatient_Button"/>
+        <Button x:Name="ResetButton" Content="Reset" HorizontalAlignment="Left" Margin="464,387,0,0" VerticalAlignment="Top" Width="114" Height="23" Background="#FF425563" Foreground="White" BorderBrush="{x:Null}" FontFamily="Gen" Click="Reset_Button_Click"/>
         <ComboBox x:Name="EyeColorCombo" HorizontalAlignment="Left" Margin="203,357,0,0" VerticalAlignment="Top" Width="120">
             <ComboBoxItem Content="green"/>
             <ComboBoxItem Content="brown"/>
@@ -38,7 +37,7 @@
             <ComboBoxItem Background="{x:Null}" Content="Female"/>
         </ComboBox>
         <TextBox x:Name="HeightInput" HorizontalAlignment="Left" Height="23" Margin="203,290,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <DataGrid x:Name="SearchResults" HorizontalAlignment="Left" Height="264" Margin="359,102,0,0" VerticalAlignment="Top" Width="308" MouseDoubleClick="SearchResults_MouseDoubleClick" />
+        <DataGrid x:Name="SearchResults" HorizontalAlignment="Left" Height="264" Margin="351,102,0,0" VerticalAlignment="Top" Width="367" MouseDoubleClick="SearchResults_MouseDoubleClick" />
 
 
     </Grid>

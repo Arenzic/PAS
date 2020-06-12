@@ -32,11 +32,14 @@ namespace PAS
             
             SqliteDataAccess sqldataConn = new SqliteDataAccess();
             int people = sqldataConn.LoadPerson();
-            int inPatient = sqldataConn.LoadInPatients();
+            int inWard = sqldataConn.LoadWardPatients();
+            int inIcu = sqldataConn.LoadIcuPatients();
             //need to use property only (TextboxText), as i cannot bind with a variable.
             totalPersons.DataContext = new TextboxText() { textdata = people };
 
-            totalInPatients.DataContext = new TextboxText() { textdata = inPatient };
+            totalWard.DataContext = new TextboxText() { textdata = inWard };
+
+            totalIcu.DataContext = new TextboxText() { textdata = inWard };
 
         }
 
@@ -58,13 +61,7 @@ namespace PAS
             return nodeCount;
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            String query = null;
-            Search se = new Search(query);
-            se.Show();
-            this.Close();
-        }
+
 
         public class TextboxText
         {
@@ -81,12 +78,30 @@ namespace PAS
             this.Close();
         }
 
-        private void Inpatients_Button(object sender, RoutedEventArgs e)
+        private void ICU_Button(object sender, RoutedEventArgs e)
         {
-            string query = "SELECT * FROM person WHERE status = 'ICU' OR status = 'Ward'";
+            string query = "SELECT * FROM person WHERE status = 'ICU'";
             Search se = new Search(query);
             se.Show();
             this.Close();
         }
+
+        private void Ward_Click(object sender, RoutedEventArgs e)
+        {
+            string query = "SELECT * FROM person WHERE status = 'Ward'";
+            Search se = new Search(query);
+            se.Show();
+            this.Close();
+        }
+
+        private void allPatients_Button(object sender, RoutedEventArgs e)
+        {
+            String query = null;
+            Search se = new Search(query);
+            se.Show();
+            this.Close();
+        }
+
+
     }
 }
