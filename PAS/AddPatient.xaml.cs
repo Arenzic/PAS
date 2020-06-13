@@ -57,6 +57,10 @@ namespace PAS
                 ComboBoxItem EyeItem = (ComboBoxItem)EyeColorCombo.SelectedItem;
                 p.EyeColor = EyeItem.Content.ToString();
 
+                ComboBoxItem StatusItem = (ComboBoxItem)StatusCombo.SelectedItem;
+                p.Status = StatusItem.Content.ToString();
+
+
                 //launching the addPerson method, and passing it the class person.
                 SqliteDataAccess sqlDataA = new SqliteDataAccess();
                 sqlDataA.AddPerson(p);
@@ -67,6 +71,7 @@ namespace PAS
                 HeightInput.Text = "";
                 GenderCombo.Items.Clear();
                 EyeColorCombo.Items.Clear();
+                StatusCombo.Items.Clear();
                
             }
             else

@@ -210,7 +210,7 @@ namespace PAS
         public void AddPerson(Person p)
         {
 
-            SQLiteCommand insertQuery = new SQLiteCommand("insert into person (SurName, GivenName, Height, Gender, EyeColor)values (@sname, @gname, @height, @gender, @eyecolor)", sqlite);
+            SQLiteCommand insertQuery = new SQLiteCommand("insert into person (SurName, GivenName, Height, Gender, EyeColor, status)values (@sname, @gname, @height, @gender, @eyecolor, @status)", sqlite);
             
             try
             {
@@ -224,6 +224,7 @@ namespace PAS
                 //insertQuery.Parameters.AddWithValue("@height", p.Height);
                 insertQuery.Parameters.AddWithValue("@gender", p.Gender);
                 insertQuery.Parameters.AddWithValue("@eyecolor", p.EyeColor);
+                insertQuery.Parameters.AddWithValue("@status", p.Status);
 
                 insertQuery.ExecuteNonQuery();
                 insertQuery.Connection = sqlite;

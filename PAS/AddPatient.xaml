@@ -36,9 +36,12 @@
         </ComboBox>
         <TextBlock HorizontalAlignment="Left" Margin="417,189,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Eye Colour"/><LineBreak/><Run Text=""/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="417,255,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Status"/>
-        <ComboBox HorizontalAlignment="Left" Margin="417,276,0,0" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="ResetButton" Content="Reset" HorizontalAlignment="Left" Margin="417,351,0,0" VerticalAlignment="Top" Width="114" Height="23" Background="#FF425563" Foreground="White" BorderBrush="{x:Null}" FontFamily="Gen" Click="Reset_Button_Click"/>
         <TextBox x:Name="HeightInput" HorizontalAlignment="Left" Height="23" Margin="417,148,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="StatusCombo" HorizontalAlignment="Left" Margin="417,276,0,0" VerticalAlignment="Top" Width="120">
+            <ComboBoxItem Background="{x:Null}" Content="Ward"/>
+            <ComboBoxItem Background="{x:Null}" Content="ICU"/>
+        </ComboBox>
 
     </Grid>
 </Window>

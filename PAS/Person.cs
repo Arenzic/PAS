@@ -14,6 +14,10 @@ namespace PAS
         public string Gender { get;  set; }
         public string EyeColor { get;  set; }
 
+        public string Status { get; set; }
+
+
+
 
 
     }
