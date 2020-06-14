@@ -119,9 +119,10 @@ namespace PAS
 
         private void SearchResults_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            //determining the selected result, and passing the id into the user info.
             DataRowView select = SearchResults.SelectedItem as DataRowView;
 
-            String id = select.Row[0].ToString();
+            string id = select.Row[0].ToString();
 
             UserInfo ui = new UserInfo(select, id);
             ui.Show();

@@ -14,7 +14,7 @@
         <Button Content="In Patients" HorizontalAlignment="Left" Margin="0,126,0,0" VerticalAlignment="Top" Width="168" Height="44" Background="#FF425563" Foreground="White" BorderBrush="{x:Null}" FontFamily="Gen" Click="Button_Click_1"/>
         <Button Content="All Patients" HorizontalAlignment="Left" Margin="0,168,0,0" VerticalAlignment="Top" Width="168" Height="44" Background="#FF425563" Foreground="White" BorderBrush="{x:Null}" FontFamily="Gen" Click="Button_Click"/>
         <Label Content="PAS" HorizontalAlignment="Left" Margin="75,15,0,0" VerticalAlignment="Top" Foreground="White" FontSize="30" FontFamily="Gen"/>
-        <Label Content="Profile" HorizontalAlignment="Left" Margin="186,15,0,0" VerticalAlignment="Top" Foreground="Black" FontSize="30" FontFamily="Gen" Background="White"/>
+        <Label x:Name="fullName" Content="" HorizontalAlignment="Left" Margin="186,15,0,0" VerticalAlignment="Top" Foreground="Black" FontSize="30" FontFamily="Gen" Background="White"/>
         <Image HorizontalAlignment="Left" Height="42" Margin="19,15,0,0" VerticalAlignment="Top" Width="37" Source="Icons/health.png"/>
         <TextBox x:Name="FNameInput" HorizontalAlignment="Left" Height="23" Margin="203,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="UpdateButton" Content="Update" HorizontalAlignment="Left" Margin="553,387,0,0" VerticalAlignment="Top" Width="114" Height="23" Background="#FF425563" Foreground="White" BorderBrush="{x:Null}" FontFamily="Gen" Click="Update_Button_Click"/>

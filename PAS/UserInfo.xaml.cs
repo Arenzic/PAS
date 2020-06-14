@@ -35,9 +35,11 @@ namespace PAS
             SQLiteDataReader reader = sqldata.Query(queryString);
             if(reader.Read())
             {
+                string fullname = reader.GetString(2) + " " + reader.GetString(1);
+                fullName.Content = fullname;
                 setId.Content = reader.GetInt16(0);
-                FNameInput.Text = reader.GetString(1);
-                SurnameInput.Text = reader.GetString(2);
+                SurnameInput.Text = reader.GetString(1);
+                FNameInput.Text = reader.GetString(2);
                 //GenderCombo.SelectedItem = reader.GetString(3);
                 //Height.Text = reader.GetInt32(4);
                 //StatusCombo.SelectedIndex = (int)reader.GetValue(3);

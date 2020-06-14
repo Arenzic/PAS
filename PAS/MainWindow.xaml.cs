@@ -34,6 +34,7 @@ namespace PAS
             int people = sqldataConn.LoadPerson();
             int inWard = sqldataConn.LoadWardPatients();
             int inIcu = sqldataConn.LoadIcuPatients();
+
             //need to use property only (TextboxText), as i cannot bind with a variable.
             totalPersons.DataContext = new TextboxText() { textdata = people };
 
@@ -78,6 +79,7 @@ namespace PAS
             this.Close();
         }
 
+        //dashboard buttons that pass the query as a parameter, if it needs to search a given group.
         private void ICU_Button(object sender, RoutedEventArgs e)
         {
             string query = "SELECT * FROM person WHERE status = 'ICU'";
