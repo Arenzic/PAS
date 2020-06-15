@@ -124,6 +124,7 @@ namespace PAS
 
             string id = select.Row[0].ToString();
 
+            //id paramater
             UserInfo ui = new UserInfo(select, id);
             ui.Show();
             this.Close();

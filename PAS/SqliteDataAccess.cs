@@ -55,7 +55,7 @@ namespace PAS
         }
 
 
-
+        //loading different search screens based on the button click, slight changes in query (inefficient?)
         public int LoadPerson()
             {
             int Rowcount = 0;
@@ -129,6 +129,7 @@ namespace PAS
             DataTable Table = null;
             if (Conn1 != null)
             {
+                //creating a table and then filling it with the query info
                 SQLiteCommand Command = new SQLiteCommand(QueryString, sqlite);
                 SQLiteDataAdapter Adapter = new SQLiteDataAdapter(Command);
                 Table = new DataTable();
@@ -214,6 +215,7 @@ namespace PAS
             
             try
             {
+                //passing paramateres securely with add value
                 insertQuery.Parameters.AddWithValue("@sname", p.SurName);
                 insertQuery.Parameters.AddWithValue("@gname", p.GivenName);
                 SQLiteParameter param = new SQLiteParameter("@height", p.Height);
