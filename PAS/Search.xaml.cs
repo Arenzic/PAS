@@ -68,19 +68,7 @@ namespace PAS
                  DecHeight = decimal.Parse(HeightInput.Text);
             }
 
-           //sqlData.ReadData(FNameInput.Text, SurnameInput.Text, DecHeight, StringEyeColor, StringGender);
-            /*
-            if(FNameInput.Text != null && FNameInput.Text.Length >=3)
-            {
-                
-
-            }
-            else
-            {
-                System.Windows.MessageBox.Show("Invalid Input");
-                FNameInput.Text = string.Empty;
-            }
-            */
+           
         }
 
         private void AddPatient_Button(object sender, RoutedEventArgs e)

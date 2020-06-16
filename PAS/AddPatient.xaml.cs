@@ -41,7 +41,7 @@ namespace PAS
 
         private void Add_Button_Click(object sender, RoutedEventArgs e)
         {
-            if (FNameInput.Text != "" && SurnameInput.Text != "" && HeightInput.Text != "" && GenderCombo.SelectedIndex != -1 && EyeColorCombo.SelectedIndex != -1)
+            if (FNameInput.Text != "" && SurnameInput.Text != "" && HeightInput.Text != "" && GenderCombo.SelectedIndex != -1 && EyeColorCombo.SelectedIndex != -1 && StatusCombo.SelectedIndex != -1)
             {
                 //assinging to class
                 Person p = new Person();
