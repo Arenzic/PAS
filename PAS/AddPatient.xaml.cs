@@ -48,7 +48,8 @@ namespace PAS
                 p.SurName = SurnameInput.Text;
                 p.GivenName = FNameInput.Text;
 
-                p.Height = decimal.Parse(HeightInput.Text);
+                
+                p.Height = decimal.Parse(HeightInput.Text.Replace('.',','));
 
                 //combo box selections to string values.
                 ComboBoxItem GenderItem = (ComboBoxItem)GenderCombo.SelectedItem;
