@@ -22,6 +22,8 @@ namespace PAS
     /// </summary>
     public partial class Search : Window
     {
+
+        private bool DoctorButtonClicked = false;
         public Search(string query)
         {
             InitializeComponent();
@@ -124,6 +126,28 @@ namespace PAS
             Search se = new Search(query);
             se.Show();
             this.Close();
+        }
+
+        private void allPatients_Button(object sender, RoutedEventArgs e)
+        {
+            if(DoctorButtonClicked.Equals(false))
+                {
+                DoctorButtonClicked = true;
+                string query = "SELECT * FROM doctor";
+                Search se = new Search(query);
+                se.Show();
+                searchdoc.Content = "Search Patient";
+                this.Close();
+            }
+            else
+            {
+                DoctorButtonClicked = false;
+                string query = "SELECT * FROM person WHERE status = 'ICU' OR status = 'Ward'";
+                Search se = new Search(query);
+                se.Show();
+                this.Close();
+            }
+           
         }
     }
 }
