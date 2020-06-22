@@ -23,7 +23,7 @@ namespace PAS
     public partial class Search : Window
     {
 
-        private bool _IsDoctor;
+        //private bool _IsDoctor;
 
         
         public Search(string query)
@@ -53,7 +53,6 @@ namespace PAS
 
             string StringGender = null;
             string StringEyeColor = null;
-            decimal DecHeight = 0;
 
             if (FNameInput.Text != "")
             {
@@ -65,7 +64,7 @@ namespace PAS
                 }
                 else
                 {
-                    query = query + " AND WHERE GivenName LIKE '" + FNameInput.Text + "'";
+                    query = query + " AND GivenName LIKE '" + FNameInput.Text + "'";
                 }
             }
 
@@ -79,7 +78,7 @@ namespace PAS
                 }
                 else
                 {
-                    query = query + " AND WHERE SurName LIKE '" + SurnameInput.Text + "'";
+                    query = query + " AND SurName LIKE '" + SurnameInput.Text + "'";
                 }
             }
 
@@ -94,7 +93,7 @@ namespace PAS
                 }
                 else
                 {
-                    query = query + " AND WHERE Gender LIKE '" + StringGender + "'";
+                    query = query + " AND Gender LIKE '" + StringGender + "'";
                 }
             }
 
@@ -111,23 +110,24 @@ namespace PAS
                 }
                 else
                 {
-                    query = query + " AND WHERE EyeColor LIKE '" + StringEyeColor + "'";
+                    query = query + " AND EyeColor LIKE '" + StringEyeColor + "'";
                     queryCount++;
                 }
             }
 
             if(HeightInput.Text != "")
             {
-                 DecHeight = decimal.Parse(HeightInput.Text);
+                string height = HeightInput.Text;
+                string decHeight = height.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
                 if (queryCount < 1)
                 {
-                    query = query + " WHERE Height LIKE '" + DecHeight + "'";
+                    query = query + " WHERE Height LIKE '" + decHeight + "'";
                     queryCount++;
                 }
                 else
                 {
-                    query = query + " AND WHERE Height LIKE '" + DecHeight + "'";
+                    query = query + " AND Height LIKE '" + decHeight + "'";
                 }
             }
 

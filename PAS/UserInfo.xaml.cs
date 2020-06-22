@@ -28,30 +28,33 @@ namespace PAS
         public UserInfo(DataRowView source, String userId)
         {
             InitializeComponent();
-            
+
 
             string queryString = "SELECT * FROM person WHERE id = " + userId + ";";
 
             SQLiteDataReader reader = sqldata.Query(queryString);
-            if(reader.Read())
-            {
-                string fullname = reader.GetString(2) + " " + reader.GetString(1);
-                fullName.Content = fullname;
-                setId.Content = reader.GetInt16(0);
-                SurnameInput.Text = reader.GetString(1);
-                FNameInput.Text = reader.GetString(2);
-                //GenderCombo.SelectedItem = reader.GetString(3);
-                //Height.Text = reader.GetInt32(4);
-                //StatusCombo.SelectedIndex = (int)reader.GetValue(3);
-                //EyeColorCombo.SelectedIndex = (int)reader.GetValue(6);
+                if (reader.Read())
+                {
+                    string fullname = reader.GetString(2) + " " + reader.GetString(1);
+                    fullName.Content = fullname;
+                    setId.Content = reader.GetInt16(0);
+                    SurnameInput.Text = reader.GetString(1);
+                    FNameInput.Text = reader.GetString(2);
+                    //GenderCombo.SelectedItem = reader.GetString(3);
+                    //Height.Text = reader.GetInt32(4);
+                    //StatusCombo.SelectedIndex = (int)reader.GetValue(3);
+                    //EyeColorCombo.SelectedIndex = (int)reader.GetValue(6);
+                }
+
+                reader.Close();
+
+                userid2 = userId;
+
             }
+ 
 
-            reader.Close();
 
-            userid2 = userId;
-        }
-
-        private void Dashboard_Button(object sender, RoutedEventArgs e)
+    private void Dashboard_Button(object sender, RoutedEventArgs e)
         {
             MainWindow mw = new MainWindow();
             mw.Show();
