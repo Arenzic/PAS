@@ -21,10 +21,19 @@ namespace PAS
     /// </summary>
     public partial class AddPatient : Window
     {
-        public AddPatient()
+        public AddPatient(bool isDoctor)
         {
             InitializeComponent();
+            if (isDoctor)
+            {
+                string test = statusText.Text;
+                statusText.Text = "Work";
+            }
+            
+            
         }
+
+
 
         private void Dashboard_Button(object sender, RoutedEventArgs e)
         {
@@ -41,43 +50,87 @@ namespace PAS
 
         private void Add_Button_Click(object sender, RoutedEventArgs e)
         {
-            if (FNameInput.Text != "" && SurnameInput.Text != "" && HeightInput.Text != "" && GenderCombo.SelectedIndex != -1 && EyeColorCombo.SelectedIndex != -1 && StatusCombo.SelectedIndex != -1)
+            if (statusText.Text == "Work")
             {
-                //assinging to class
-                Person p = new Person();
-                p.SurName = SurnameInput.Text;
-                p.GivenName = FNameInput.Text;
-
-                
-                p.Height = decimal.Parse(HeightInput.Text.Replace('.',','));
-
-                //combo box selections to string values.
-                ComboBoxItem GenderItem = (ComboBoxItem)GenderCombo.SelectedItem;
-                p.Gender = GenderItem.Content.ToString();
-
-                ComboBoxItem EyeItem = (ComboBoxItem)EyeColorCombo.SelectedItem;
-                p.EyeColor = EyeItem.Content.ToString();
-
-                ComboBoxItem StatusItem = (ComboBoxItem)StatusCombo.SelectedItem;
-                p.Status = StatusItem.Content.ToString();
+                if (FNameInput.Text != "" && SurnameInput.Text != "" && HeightInput.Text != "" && GenderCombo.SelectedIndex != -1 && EyeColorCombo.SelectedIndex != -1 && StatusCombo.SelectedIndex != -1)
+                {
+                    //assinging to class
+                    Person p = new Person();
+                    p.SurName = SurnameInput.Text;
+                    p.GivenName = FNameInput.Text;
 
 
-                //launching the addPerson method, and passing it the class person.
-                SqliteDataAccess sqlDataA = new SqliteDataAccess();
-                sqlDataA.AddPerson(p);
+                    p.Height = decimal.Parse(HeightInput.Text.Replace('.', ','));
 
-                //reset fields.
-                SurnameInput.Text = "";
-                FNameInput.Text = "";
-                HeightInput.Text = "";
-                GenderCombo.Items.Clear();
-                EyeColorCombo.Items.Clear();
-                StatusCombo.Items.Clear();
-               
+                    //combo box selections to string values.
+                    ComboBoxItem GenderItem = (ComboBoxItem)GenderCombo.SelectedItem;
+                    p.Gender = GenderItem.Content.ToString();
+
+                    ComboBoxItem EyeItem = (ComboBoxItem)EyeColorCombo.SelectedItem;
+                    p.EyeColor = EyeItem.Content.ToString();
+
+                    ComboBoxItem StatusItem = (ComboBoxItem)StatusCombo.SelectedItem;
+                    p.Status = StatusItem.Content.ToString();
+
+
+                    //launching the addPerson method, and passing it the class person.
+                    SqliteDataAccess sqlDataA = new SqliteDataAccess();
+                    sqlDataA.AddPerson(p);
+
+                    //reset fields.
+                    SurnameInput.Text = "";
+                    FNameInput.Text = "";
+                    HeightInput.Text = "";
+                    GenderCombo.Items.Clear();
+                    EyeColorCombo.Items.Clear();
+                    StatusCombo.Items.Clear();
+
+                }
+                else
+                {
+                    MessageBox.Show("Please fill required boxes!");
+                }
             }
             else
             {
-                MessageBox.Show("Please fill required boxes!");
+                if (FNameInput.Text != "" && SurnameInput.Text != "" && HeightInput.Text != "" && GenderCombo.SelectedIndex != -1 && EyeColorCombo.SelectedIndex != -1 && StatusCombo.SelectedIndex != -1)
+                {
+                    //assinging to class
+                    Doctor d = new Doctor();
+                    d.SurName = SurnameInput.Text;
+                    d.GivenName = FNameInput.Text;
+
+
+                    d.Height = decimal.Parse(HeightInput.Text.Replace('.', ','));
+
+                    //combo box selections to string values.
+                    ComboBoxItem GenderItem = (ComboBoxItem)GenderCombo.SelectedItem;
+                    d.Gender = GenderItem.Content.ToString();
+
+                    ComboBoxItem EyeItem = (ComboBoxItem)EyeColorCombo.SelectedItem;
+                    d.EyeColor = EyeItem.Content.ToString();
+
+                    ComboBoxItem WorkItem = (ComboBoxItem)StatusCombo.SelectedItem;
+                    d.work = WorkItem.Content.ToString();
+
+
+                    //launching the addPerson method, and passing it the class person.
+                    SqliteDataAccess sqlDataA = new SqliteDataAccess();
+                    sqlDataA.AddPerson(d);
+
+                    //reset fields.
+                    SurnameInput.Text = "";
+                    FNameInput.Text = "";
+                    HeightInput.Text = "";
+                    GenderCombo.Items.Clear();
+                    EyeColorCombo.Items.Clear();
+                    StatusCombo.Items.Clear();
+
+                }
+                else
+                {
+                    MessageBox.Show("Please fill required boxes!");
+                }
             }
 
             

@@ -78,7 +78,7 @@ namespace PAS
         private void AddPatient_Button(object sender, RoutedEventArgs e)
         {
             
-                AddPatient AddPat = new AddPatient();
+                AddPatient AddPat = new AddPatient(false);
                 AddPat.Show();
                 this.Close();
             

@@ -159,8 +159,8 @@
     <Compile Include="AddPatient.xaml.cs">
       <DependentUpon>AddPatient.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Doctor.cs" />
-    <Compile Include="Person.cs" />
+    <Compile Include="Classes\Doctor.cs" />
+    <Compile Include="Classes\Person.cs" />
     <Compile Include="Search.xaml.cs">
       <DependentUpon>Search.xaml</DependentUpon>
     </Compile>
@@ -220,9 +220,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Classes\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Icons\Zoom-icon.png" />
   </ItemGroup>

@@ -16,7 +16,6 @@ namespace PAS
 
         public string Status { get; set; }
 
-        public int doctorId { get; set; }
 
 
 

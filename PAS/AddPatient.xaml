@@ -16,7 +16,6 @@
         <Label Content="PAS" HorizontalAlignment="Left" Margin="76,15,0,0" VerticalAlignment="Top" Foreground="White" FontSize="30" FontFamily="Gen"/>
         <Label Content="Add Record" HorizontalAlignment="Left" Margin="187,15,0,0" VerticalAlignment="Top" Foreground="Black" FontSize="30" FontFamily="Gen" Background="White"/>
         <Image HorizontalAlignment="Left" Height="42" Margin="20,15,0,0" VerticalAlignment="Top" Width="37" Source="Icons/health.png"/>
-        <Image HorizontalAlignment="Left" Height="40" Margin="619,144,0,0" VerticalAlignment="Top" Width="49" Source="Icons/Circle-add-icon.png"/>
         <TextBox x:Name="FNameInput" HorizontalAlignment="Left" Height="23" Margin="204,143,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Button Content="Add" HorizontalAlignment="Left" Margin="554,351,0,0" VerticalAlignment="Top" Width="114" Height="23" Background="#FF425563" Foreground="White" BorderBrush="{x:Null}" FontFamily="Gen" Click="Add_Button_Click"/>
         <TextBox x:Name="SurnameInput" HorizontalAlignment="Left" Height="23" Margin="204,210,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
@@ -35,7 +34,7 @@
             <ComboBoxItem Content="blue"/>
         </ComboBox>
         <TextBlock HorizontalAlignment="Left" Margin="417,189,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Eye Colour"/><LineBreak/><Run Text=""/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="417,255,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Status"/>
+        <TextBlock x:Name="statusText" HorizontalAlignment="Left" Margin="417,255,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Status"/>
         <Button x:Name="ResetButton" Content="Reset" HorizontalAlignment="Left" Margin="417,351,0,0" VerticalAlignment="Top" Width="114" Height="23" Background="#FF425563" Foreground="White" BorderBrush="{x:Null}" FontFamily="Gen" Click="Reset_Button_Click"/>
         <TextBox x:Name="HeightInput" HorizontalAlignment="Left" Height="23" Margin="417,148,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <ComboBox x:Name="StatusCombo" HorizontalAlignment="Left" Margin="417,276,0,0" VerticalAlignment="Top" Width="120">

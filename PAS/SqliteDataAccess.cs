@@ -92,37 +92,20 @@ namespace PAS
             return Rowcount;
         }
 
-        /*
-        public void ReadData(string surname, string givename, decimal height, string eyecolor, string gender)
+        public int LoadDoctor()
         {
-            SQLiteDataReader sqlite_datareader;
-            SQLiteCommand sqlite_cmd;
+            int Rowcount = 0;
+            SQLiteCommand cmd = new SQLiteCommand(sqlite);
+            cmd.CommandText = "SELECT COUNT (id) FROM person WHERE status = 'ICU'";
 
-            sqlite_cmd = sqlite.CreateCommand();
-            sqlite_cmd.CommandText = "select * from person";
-
-            if (surname.Length > 0)
-            {
-                sqlite_cmd.CommandText += " where  SurName like '%" + surname + "%'";
-               // bool surTrue = true;
-            }
-            
-        
+            Rowcount = Convert.ToInt32(cmd.ExecuteScalar());
 
 
-            sqlite_datareader = sqlite_cmd.ExecuteReader();
-            while (sqlite_datareader.Read())
-            {
-                string myreader = sqlite_datareader.GetString(0);
-                Person p = new Person();
-                p.SurName = myreader;
-                
-                Search search = new Search();
-                search.tempAddToList(myreader);
-            }
-            sqlite.Close();
+            return Rowcount;
         }
-        */
+
+
+
 
         public DataTable DataTableQuery(String QueryString)
         {
@@ -218,12 +201,10 @@ namespace PAS
                 //passing paramateres securely with add value
                 insertQuery.Parameters.AddWithValue("@sname", p.SurName);
                 insertQuery.Parameters.AddWithValue("@gname", p.GivenName);
-                SQLiteParameter param = new SQLiteParameter("@height", p.Height);
-                param.SourceColumn = "height";
-                //param.Precision = 18;
-                //param.Scale = 2;
-                insertQuery.Parameters.Add(param);
-                //insertQuery.Parameters.AddWithValue("@height", p.Height);
+                //SQLiteParameter param = new SQLiteParameter("@height", p.Height);
+                //param.SourceColumn = "height";
+                //insertQuery.Parameters.Add(param);
+                insertQuery.Parameters.AddWithValue("@height", p.Height);
                 insertQuery.Parameters.AddWithValue("@gender", p.Gender);
                 insertQuery.Parameters.AddWithValue("@eyecolor", p.EyeColor);
                 insertQuery.Parameters.AddWithValue("@status", p.Status);
