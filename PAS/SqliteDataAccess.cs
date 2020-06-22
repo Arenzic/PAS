@@ -19,7 +19,7 @@ namespace PAS
 
         private SQLiteConnection sqlite;
 
-       
+
         public SqliteDataAccess()
         {
             //connection to my pas-database
@@ -57,7 +57,7 @@ namespace PAS
 
         //loading different search screens based on the button click, slight changes in query (inefficient?)
         public int LoadPerson()
-            {
+        {
             int Rowcount = 0;
             SQLiteCommand cmd = new SQLiteCommand(sqlite);
             cmd.CommandText = "SELECT COUNT (id) FROM person";
@@ -159,19 +159,19 @@ namespace PAS
 
 
 
-        public void Update(string AddString, string SurName, string GivenName, decimal Height, string gender, string status, string EyeColor)
+        public void Update(string AddString, Person p)
         {
             if (sqlite != null)
             {
 
                 SQLiteCommand Command = new SQLiteCommand(AddString, sqlite);
 
-                Command.Parameters.AddWithValue("@surname", SurName);
-                Command.Parameters.AddWithValue("@givenname", GivenName);
-                Command.Parameters.AddWithValue("@height", Height);
-                Command.Parameters.AddWithValue("@gender", gender);
-                Command.Parameters.AddWithValue("@status", status);
-                Command.Parameters.AddWithValue("@eyecolor", EyeColor);
+                Command.Parameters.AddWithValue("@surname", p.SurName);
+                Command.Parameters.AddWithValue("@givenname", p.GivenName);
+                Command.Parameters.AddWithValue("@height", p.Height);
+                Command.Parameters.AddWithValue("@gender", p.Gender);
+                Command.Parameters.AddWithValue("@status", p.Status);
+                Command.Parameters.AddWithValue("@eyecolor", p.EyeColor);
 
                 try
                 {
@@ -191,43 +191,93 @@ namespace PAS
 
 
 
-        public void AddPerson(Person p)
+        public void AddPerson(Person p, Doctor d, bool isDoctor)
         {
-
-            SQLiteCommand insertQuery = new SQLiteCommand("insert into person (SurName, GivenName, Height, Gender, EyeColor, status)values (@sname, @gname, @height, @gender, @eyecolor, @status)", sqlite);
-            
-            try
+            if (!isDoctor)
             {
+
+
+                SQLiteCommand insertQuery = new SQLiteCommand("insert into person (SurName, GivenName, Height, Gender, EyeColor, status)values (@sname, @gname, @height, @gender, @eyecolor, @status)", sqlite);
+
+
                 //passing paramateres securely with add value
                 insertQuery.Parameters.AddWithValue("@sname", p.SurName);
                 insertQuery.Parameters.AddWithValue("@gname", p.GivenName);
                 //SQLiteParameter param = new SQLiteParameter("@height", p.Height);
-                //param.SourceColumn = "height";
+                //SourceColumn = "height";
                 //insertQuery.Parameters.Add(param);
                 insertQuery.Parameters.AddWithValue("@height", p.Height);
                 insertQuery.Parameters.AddWithValue("@gender", p.Gender);
                 insertQuery.Parameters.AddWithValue("@eyecolor", p.EyeColor);
                 insertQuery.Parameters.AddWithValue("@status", p.Status);
 
-                insertQuery.ExecuteNonQuery();
-                insertQuery.Connection = sqlite;
-                System.Windows.MessageBox.Show("Person Added.");
-                sqlite.Close();
 
+                try
+                {
+                    insertQuery.ExecuteNonQuery();
+                    System.Windows.MessageBox.Show("Person Added.");
+                }
 
-
+                catch (Exception exc)
+                {
+                    throw new Exception(exc.Message);
+                }
             }
-            catch(Exception exc)
+
+
+
+
+
+            else
             {
-                throw new Exception(exc.Message);
+                SQLiteCommand insertQuery = new SQLiteCommand("insert into person (SurName, GivenName, Height, Gender, EyeColor)values (@sname, @gname, @height, @gender, @eyecolor)", sqlite);
+
+                try
+                {
+                    //passing paramateres securely with add value
+                    insertQuery.Parameters.AddWithValue("@sname", d.SurName);
+                    insertQuery.Parameters.AddWithValue("@gname", d.GivenName);
+                    //SQLiteParameter param = new SQLiteParameter("@height", p.Height);
+                    //param.SourceColumn = "height";
+                    //insertQuery.Parameters.Add(param);
+                    insertQuery.Parameters.AddWithValue("@height", d.Height);
+                    insertQuery.Parameters.AddWithValue("@gender", d.Gender);
+                    insertQuery.Parameters.AddWithValue("@eyecolor", d.EyeColor);
+
+                    insertQuery.ExecuteNonQuery();
+                    insertQuery.Connection = sqlite;
+
+                    //return the new added 
+                    SQLiteCommand docIdQuery = new SQLiteCommand("SELECT rowid from person order by ROWID DESC limit 1;", sqlite);
+                    int docId = Convert.ToInt32(docIdQuery.ExecuteScalar());
+
+                    SQLiteCommand insertDoc = new SQLiteCommand("insert into doctor (doctorId, work)values (@docId, @work)", sqlite);
+                    insertDoc.Parameters.AddWithValue("@docId", docId);
+                    insertDoc.Parameters.AddWithValue("@work", d.work);
+
+                    insertDoc.ExecuteNonQuery();
+                    insertDoc.Connection = sqlite;
+
+
+                    System.Windows.MessageBox.Show("Doctor Added.");
+                    sqlite.Close();
+
+
+
+                }
+                catch (Exception exc)
+                {
+                    throw new Exception(exc.Message);
+                }
             }
+
         }
+    }
+}
+            
 
 
             
 
     
 
-
-}
-}

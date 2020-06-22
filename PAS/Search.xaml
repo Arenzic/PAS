@@ -17,7 +17,7 @@
         <Image HorizontalAlignment="Left" Height="42" Margin="19,15,0,0" VerticalAlignment="Top" Width="37" Source="Icons/health.png"/>
         <Image HorizontalAlignment="Left" Height="40" Margin="685,21,0,0" VerticalAlignment="Top" Width="49" Source="Icons/Zoom-icon.png"/>
         <TextBox x:Name="FNameInput" HorizontalAlignment="Left" Height="23" Margin="203,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Search" HorizontalAlignment="Left" Margin="604,387,0,0" VerticalAlignment="Top" Width="114" Height="23" Background="#FF425563" Foreground="White" BorderBrush="{x:Null}" FontFamily="Gen" Click="Button_Click_1"/>
+        <Button x:Name="searchButton" Content="Search" HorizontalAlignment="Left" Margin="604,387,0,0" VerticalAlignment="Top" Width="114" Height="23" Background="#FF425563" Foreground="White" BorderBrush="{x:Null}" FontFamily="Gen" Click="Button_Click_1"/>
         <TextBox x:Name="SurnameInput" HorizontalAlignment="Left" Height="23" Margin="203,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBlock HorizontalAlignment="Left" Margin="203,87,0,0" TextWrapping="Wrap" Text="First Name" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="203,149,0,0" TextWrapping="Wrap" Text="Surname" VerticalAlignment="Top"/>

@@ -50,12 +50,14 @@ namespace PAS
 
         private void Add_Button_Click(object sender, RoutedEventArgs e)
         {
-            if (statusText.Text == "Work")
+            if (statusText.Text != "Work")
             {
                 if (FNameInput.Text != "" && SurnameInput.Text != "" && HeightInput.Text != "" && GenderCombo.SelectedIndex != -1 && EyeColorCombo.SelectedIndex != -1 && StatusCombo.SelectedIndex != -1)
                 {
+                    bool doctor = false;
                     //assinging to class
                     Person p = new Person();
+                    Doctor d = new Doctor();
                     p.SurName = SurnameInput.Text;
                     p.GivenName = FNameInput.Text;
 
@@ -75,7 +77,7 @@ namespace PAS
 
                     //launching the addPerson method, and passing it the class person.
                     SqliteDataAccess sqlDataA = new SqliteDataAccess();
-                    sqlDataA.AddPerson(p);
+                    sqlDataA.AddPerson(p,d,doctor);
 
                     //reset fields.
                     SurnameInput.Text = "";
@@ -95,7 +97,9 @@ namespace PAS
             {
                 if (FNameInput.Text != "" && SurnameInput.Text != "" && HeightInput.Text != "" && GenderCombo.SelectedIndex != -1 && EyeColorCombo.SelectedIndex != -1 && StatusCombo.SelectedIndex != -1)
                 {
+                    bool doctor = true;
                     //assinging to class
+                    Person p = new Person();
                     Doctor d = new Doctor();
                     d.SurName = SurnameInput.Text;
                     d.GivenName = FNameInput.Text;
@@ -116,7 +120,7 @@ namespace PAS
 
                     //launching the addPerson method, and passing it the class person.
                     SqliteDataAccess sqlDataA = new SqliteDataAccess();
-                    sqlDataA.AddPerson(d);
+                    sqlDataA.AddPerson(p,d,doctor);
 
                     //reset fields.
                     SurnameInput.Text = "";

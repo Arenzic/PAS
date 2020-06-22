@@ -70,25 +70,26 @@ namespace PAS
 
         private void Update_Button_Click(object sender, RoutedEventArgs e)
         {
+            Person p = new Person();
             
-            string surname = SurnameInput.Text;
-            string givenname = FNameInput.Text;
-            decimal height = decimal.Parse(HeightInput.Text.Replace('.', ','));
+            p.SurName = SurnameInput.Text;
+            p.GivenName = FNameInput.Text;
+            p.Height = decimal.Parse(HeightInput.Text.Replace('.', ','));
 
 
             ComboBoxItem GenderItem = (ComboBoxItem)GenderCombo.SelectedItem;
-            string gender = GenderItem.Content.ToString();
+            p.Gender = GenderItem.Content.ToString();
 
             ComboBoxItem EyeItem = (ComboBoxItem)EyeColorCombo.SelectedItem;
-            string eyecolor = EyeItem.Content.ToString();
+            p.EyeColor = EyeItem.Content.ToString();
 
             ComboBoxItem StatusItem = (ComboBoxItem)StatusCombo.SelectedItem;
-            string status = StatusItem.Content.ToString();
+            p.Status = StatusItem.Content.ToString();
 
 
 
             String query = "UPDATE person SET SurName = @surname, GivenName = givenname, Height = @height, Gender = @gender, status = @status, EyeColor = @eyecolor WHERE id = " + userid2 + ";";
-            sqldata.Update(query, surname, givenname, height, gender, status, eyecolor);
+            sqldata.Update(query,p);
 
             System.Windows.MessageBox.Show("Details Updated.");
         }

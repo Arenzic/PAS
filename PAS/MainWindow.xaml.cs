@@ -82,7 +82,7 @@ namespace PAS
         //dashboard buttons that pass the query as a parameter, if it needs to search a given group.
         private void ICU_Button(object sender, RoutedEventArgs e)
         {
-            string query = "SELECT SurName, GivenName, Height, Gender, status, EyeColor FROM person WHERE status = 'ICU'";
+            string query = "SELECT id, SurName, GivenName, Height, Gender, status, EyeColor FROM person WHERE status = 'ICU'";
             Search se = new Search(query);
             se.Show();
             this.Close();
@@ -90,7 +90,7 @@ namespace PAS
 
         private void Ward_Click(object sender, RoutedEventArgs e)
         {
-            string query = "SELECT SurName, GivenName, Height, Gender, status, EyeColor FROM person WHERE status = 'Ward'";
+            string query = "SELECT id, SurName, GivenName, Height, Gender, status, EyeColor FROM person WHERE status = 'Ward'";
             Search se = new Search(query);
             se.Show();
             this.Close();
