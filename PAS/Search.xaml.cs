@@ -33,7 +33,7 @@ namespace PAS
             SqliteDataAccess sqlData = new SqliteDataAccess();
             if (query == null)
             {
-                DataTable Table = sqlData.DataTableQuery("SELECT * FROM person");
+                DataTable Table = sqlData.DataTableQuery("SELECT id, SurName, GivenName, Height, Gender, status, EyeColor FROM person");
                 SearchResults.ItemsSource = Table.DefaultView;
             }
             else
@@ -124,7 +124,7 @@ namespace PAS
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            string query = "SELECT * FROM person WHERE status = 'ICU' OR status = 'Ward'";
+            string query = "SELECT id, SurName, GivenName, Height, Gender, status, EyeColor FROM person WHERE status = 'ICU' OR status = 'Ward'";
             Search se = new Search(query);
             se.Show();
             this.Close();
@@ -138,13 +138,14 @@ namespace PAS
             set
             {
                 _IsDoctor = value;
-                searchdoc.Content = _IsDoctor ? "Search Doctors" : "Search Patients";
+                searchdoc.DataContext = _IsDoctor ? "Search Doctors" : "Search Patients";
             }
         }
 
         private void allPatients_Button(object sender, RoutedEventArgs e)
         {
             IsDoctor = !IsDoctor;
+            
 
         }
     }

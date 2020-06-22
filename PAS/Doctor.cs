@@ -8,5 +8,7 @@ namespace PAS
 {
     class Doctor : Person
     {
+
+        public string favWord { get; set; }
     }
 }

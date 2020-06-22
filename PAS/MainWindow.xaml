@@ -31,6 +31,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="556,263,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Patients in "/><Run Text="ICU"/></TextBlock>
         <Button Content="View" HorizontalAlignment="Left" Margin="537,287,0,0" VerticalAlignment="Top" Width="114" Height="23" Background="#FF005EB8" Foreground="White" BorderBrush="{x:Null}" FontFamily="Gen" Click="ICU_Button"/>
         <Image HorizontalAlignment="Left" Height="82" Margin="556,156,0,0" VerticalAlignment="Top" Width="95" Source="icons8-hospital-bed-64.png"/>
+        <Button Content="Add Doctor" HorizontalAlignment="Left" Margin="0,126,0,0" VerticalAlignment="Top" Width="168" Height="44" Background="#FF425563" Foreground="White" BorderBrush="{x:Null}" FontFamily="Gen" Click="AddDoctor_Button"/>
     </Grid>
 
 </Window>

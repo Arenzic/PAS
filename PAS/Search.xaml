@@ -37,7 +37,7 @@
             <ComboBoxItem Background="{x:Null}" Content="Female"/>
         </ComboBox>
         <TextBox x:Name="HeightInput" HorizontalAlignment="Left" Height="23" Margin="203,290,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <DataGrid x:Name="SearchResults" HorizontalAlignment="Left" Height="264" Margin="351,102,0,0" VerticalAlignment="Top" Width="367" MouseDoubleClick="SearchResults_MouseDoubleClick" />
+        <DataGrid x:Name="SearchResults" HorizontalAlignment="Left" Height="264" Margin="367,103,0,0" VerticalAlignment="Top" Width="351" MouseDoubleClick="SearchResults_MouseDoubleClick" />
         <Button x:Name="searchdoc" Content="Search Doctors" HorizontalAlignment="Left" Margin="525,31,0,0" VerticalAlignment="Top" Width="114" Height="23" Background="#FF005EB8" Foreground="White" BorderBrush="{x:Null}" FontFamily="Gen" Click="allPatients_Button"/>
 
 
