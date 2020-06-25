@@ -53,9 +53,19 @@ namespace PAS
                     setId.Content = reader.GetInt16(0);
                     SurnameInput.Text = reader.GetString(1);
                     FNameInput.Text = reader.GetString(2);
-                    //GenderCombo.SelectedItem = reader.GetString(3);
-                    //Height.Text = reader.GetInt32(4);
-                    //StatusCombo.SelectedIndex = (int)reader.GetValue(3);
+                //GenderCombo.SelectedItem = reader.GetString(3);
+                //Height.Text = reader.GetInt32(4);
+                string status = reader.GetString(5);
+                
+                
+                if (status == "Ward")
+                {
+                    StatusCombo.SelectedIndex = 0;
+                }
+                else if(status == "ICU")
+                {
+                    StatusCombo.SelectedIndex = 1;
+                }
                     //EyeColorCombo.SelectedIndex = (int)reader.GetValue(6);
                 }
 
