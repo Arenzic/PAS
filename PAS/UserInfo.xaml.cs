@@ -28,14 +28,14 @@ namespace PAS
         public UserInfo(DataRowView source, String userId, string doctorId)
         {
             InitializeComponent();
-            
+
 
 
             string queryString = "SELECT * FROM person WHERE id = " + userId + ";";
 
             SQLiteDataReader reader = sqldata.Query(queryString);
-                if (reader.Read())
-                {
+            if (reader.Read())
+            {
 
                 if (doctorId == "")
                 {
@@ -49,32 +49,57 @@ namespace PAS
                     statusText.Text = "Work";
                     promDoctor_button.Visibility = Visibility.Hidden;
                 }
-               
-                    setId.Content = reader.GetInt16(0);
-                    SurnameInput.Text = reader.GetString(1);
-                    FNameInput.Text = reader.GetString(2);
-                //GenderCombo.SelectedItem = reader.GetString(3);
-                //Height.Text = reader.GetInt32(4);
-                string status = reader.GetString(5);
-                
-                
-                if (status == "Ward")
+
+                setId.Content = reader.GetInt16(0);
+                SurnameInput.Text = reader.GetString(1);
+                FNameInput.Text = reader.GetString(2);
+
+                string gender = reader.GetString(4);
+
+                if (gender == "male")
                 {
-                    StatusCombo.SelectedIndex = 0;
+                    GenderCombo.SelectedIndex = 0;
                 }
-                else if(status == "ICU")
+                else if (gender == "female")
                 {
-                    StatusCombo.SelectedIndex = 1;
-                }
-                    //EyeColorCombo.SelectedIndex = (int)reader.GetValue(6);
+                    GenderCombo.SelectedIndex = 1;
                 }
 
-                reader.Close();
+                //HeightInput.Text = Convert.ToString(reader.GetInt32(3));
 
-                userid2 = userId;
+                //if the position is not equivelant to a db null, assign.
+                if (reader.IsDBNull(5))
+                {
+                    StatusCombo.SelectedIndex = -1;
+                }else
+                {
+
+
+                    string status = reader.GetString(5);
+
+
+                    if (status == "Ward")
+                    {
+                        StatusCombo.SelectedIndex = 0;
+                    }
+                    else if (status == "ICU")
+                    {
+                        StatusCombo.SelectedIndex = 1;
+                    }
+                }
 
             }
- 
+
+            //EyeColorCombo.SelectedIndex = (int)reader.GetValue(6);
+
+
+
+            reader.Close();
+
+            userid2 = userId;
+
+
+        }
 
 
     private void Dashboard_Button(object sender, RoutedEventArgs e)

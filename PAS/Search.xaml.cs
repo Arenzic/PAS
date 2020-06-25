@@ -193,26 +193,7 @@ namespace PAS
             this.Close();
         }
 
-        /*
-        public bool IsDoctor
-        {
-            get
-            {
-                return _IsDoctor;
-            }
-            set
-            {
-                _IsDoctor = value;
-                searchdoc.DataContext = _IsDoctor ? "Search Doctors" : "Search Patients";
-            }
-        }
-        */
+       
 
-        private void allPatients_Button(object sender, RoutedEventArgs e)
-        {
-            //IsDoctor = !IsDoctor;
-            
-
-        }
     }
 }
