@@ -25,9 +25,10 @@ namespace PAS
         private SqliteDataAccess sqldata = new SqliteDataAccess();
         String userid2 = "";
 
-        public UserInfo(DataRowView source, String userId)
+        public UserInfo(DataRowView source, String userId, string doctorId)
         {
             InitializeComponent();
+            
 
 
             string queryString = "SELECT * FROM person WHERE id = " + userId + ";";
@@ -35,8 +36,20 @@ namespace PAS
             SQLiteDataReader reader = sqldata.Query(queryString);
                 if (reader.Read())
                 {
-                    string fullname = reader.GetString(2) + " " + reader.GetString(1);
+
+                if (doctorId == "")
+                {
+                    string fullname = reader.GetString(2) + " " + reader.GetString(1) + "- Patient";
                     fullName.Content = fullname;
+                }
+                else
+                {
+                    string fullname = reader.GetString(2) + " " + reader.GetString(1) + " - Doctor";
+                    fullName.Content = fullname;
+                    statusText.Text = "Work";
+                    promDoctor_button.Visibility = Visibility.Hidden;
+                }
+               
                     setId.Content = reader.GetInt16(0);
                     SurnameInput.Text = reader.GetString(1);
                     FNameInput.Text = reader.GetString(2);
@@ -73,6 +86,7 @@ namespace PAS
 
         private void Update_Button_Click(object sender, RoutedEventArgs e)
         {
+            bool DoctorProm = false;
             Person p = new Person();
             
             p.SurName = SurnameInput.Text;
@@ -92,7 +106,7 @@ namespace PAS
 
 
             String query = "UPDATE person SET SurName = @surname, GivenName = givenname, Height = @height, Gender = @gender, status = @status, EyeColor = @eyecolor WHERE id = " + userid2 + ";";
-            sqldata.Update(query,p);
+            sqldata.Update(query,p, DoctorProm);
 
             System.Windows.MessageBox.Show("Details Updated.");
         }
@@ -131,6 +145,21 @@ namespace PAS
             Search se = new Search(query);
             se.Show();
             this.Close();
+        }
+
+        private void Prom_Button_Click(object sender, RoutedEventArgs e)
+        {
+
+            bool DoctorProm = true;
+            Person p = new Person();
+
+            ComboBoxItem StatusItem = (ComboBoxItem)StatusCombo.SelectedItem;
+            p.Status = StatusItem.Content.ToString();
+
+            string promQuery = "INSERT INTO doctor(doctorId, work) values (" + userid2 + ", @work)";
+            sqldata.Update(promQuery, p, DoctorProm);
+
+            System.Windows.MessageBox.Show("Person updated to Doctor.");
         }
     }
 }

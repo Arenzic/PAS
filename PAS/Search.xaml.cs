@@ -33,7 +33,8 @@ namespace PAS
             SqliteDataAccess sqlData = new SqliteDataAccess();
             if (query == null)
             {
-                DataTable Table = sqlData.DataTableQuery("SELECT id, SurName, GivenName, Height, Gender, status, EyeColor FROM person");
+                DataTable Table = sqlData.DataTableQuery("SELECT person.surName, person.GivenName, person.Height, person.Gender, person.status, " +
+                    "person.EyeColor, person.id, doctor.doctorId FROM person LEFT JOIN doctor ON person.id = doctor.doctorId");
                 SearchResults.ItemsSource = Table.DefaultView;
             }
             else
@@ -170,9 +171,10 @@ namespace PAS
 
             try
             {
-                string id = select.Row[0].ToString();
+                string id = select.Row[6].ToString();
+                string doctorId = select.Row[7].ToString();
                 //id paramater
-                UserInfo ui = new UserInfo(select, id);
+                UserInfo ui = new UserInfo(select, id, doctorId);
                 ui.Show();
                 this.Close();
             }

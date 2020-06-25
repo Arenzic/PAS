@@ -159,10 +159,27 @@ namespace PAS
 
 
 
-        public void Update(string AddString, Person p)
+        public void Update(string AddString, Person p, bool DoctorPromote)
         {
             if (sqlite != null)
             {
+                if (DoctorPromote)
+                {
+                    SQLiteCommand promote = new SQLiteCommand(AddString, sqlite);
+                    promote.Parameters.AddWithValue("@work", p.Status);
+
+                    try
+                    {
+
+                        promote.ExecuteNonQuery();
+
+                    }
+                    catch (SQLiteException E)
+                    {
+                        Console.Error.WriteLine(E.Message);
+                    }
+                }
+
 
                 SQLiteCommand Command = new SQLiteCommand(AddString, sqlite);
 
@@ -183,15 +200,19 @@ namespace PAS
                 {
                     Console.Error.WriteLine(E.Message);
                 }
+
             }
+
         }
+    
 
 
 
 
 
 
-        public void AddPerson(Person p, Doctor d, bool isDoctor)
+
+    public void AddPerson(Person p, Doctor d, bool isDoctor)
         {
             if (!isDoctor)
             {

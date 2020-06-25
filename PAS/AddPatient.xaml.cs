@@ -55,9 +55,10 @@ namespace PAS
                 if (FNameInput.Text != "" && SurnameInput.Text != "" && HeightInput.Text != "" && GenderCombo.SelectedIndex != -1 && EyeColorCombo.SelectedIndex != -1 && StatusCombo.SelectedIndex != -1)
                 {
                     bool doctor = false;
+                    Doctor d = new Doctor();
+
                     //assinging to class
                     Person p = new Person();
-                    Doctor d = new Doctor();
                     p.SurName = SurnameInput.Text;
                     p.GivenName = FNameInput.Text;
 
