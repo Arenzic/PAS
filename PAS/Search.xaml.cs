@@ -23,7 +23,6 @@ namespace PAS
     public partial class Search : Window
     {
 
-        //private bool _IsDoctor;
 
         
         public Search(string query)
@@ -181,7 +180,7 @@ namespace PAS
             catch (Exception exc)
             {
                 System.Windows.MessageBox.Show("Please select a valid record!");
-                throw new Exception(exc.Message);
+                //throw new Exception(exc.Message);
             }
         }
 

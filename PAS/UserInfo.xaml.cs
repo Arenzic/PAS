@@ -65,13 +65,14 @@ namespace PAS
                     GenderCombo.SelectedIndex = 1;
                 }
 
-                //HeightInput.Text = Convert.ToString(reader.GetInt32(3));
+                HeightInput.Text = reader.GetDecimal(3).ToString();
 
                 //if the position is not equivelant to a db null, assign.
                 if (reader.IsDBNull(5))
                 {
                     StatusCombo.SelectedIndex = -1;
-                }else
+                }
+                else
                 {
 
 
@@ -88,6 +89,27 @@ namespace PAS
                     }
                 }
 
+                string eyeColor = reader.GetString(6);
+
+                switch (eyeColor)
+                {
+                    case "green":
+                        EyeColorCombo.SelectedIndex = 0;
+                        break;
+                    case "brown":
+                        EyeColorCombo.SelectedIndex = 1;
+                        break;
+                    case "gray":
+                        EyeColorCombo.SelectedIndex = 2;
+                        break;
+                    case "blue":
+                        EyeColorCombo.SelectedIndex = 3;
+                        break;
+                    default:
+                        EyeColorCombo.SelectedIndex = -1;
+                        break;
+
+                }
             }
 
             //EyeColorCombo.SelectedIndex = (int)reader.GetValue(6);

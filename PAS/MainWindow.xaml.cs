@@ -40,7 +40,7 @@ namespace PAS
 
             totalWard.DataContext = new TextboxText() { textdata = inWard };
 
-            totalIcu.DataContext = new TextboxText() { textdata = inWard };
+            totalIcu.DataContext = new TextboxText() { textdata = inIcu };
 
         }
 
@@ -82,7 +82,9 @@ namespace PAS
         //dashboard buttons that pass the query as a parameter, if it needs to search a given group.
         private void ICU_Button(object sender, RoutedEventArgs e)
         {
-            string query = "SELECT id, SurName, GivenName, Height, Gender, status, EyeColor FROM person WHERE status = 'ICU'";
+            string query = "SELECT person.surName, person.GivenName, person.Height, person.Gender, person.status, " +
+                    "person.EyeColor, person.id, doctor.doctorId " +
+                    "FROM person LEFT JOIN doctor ON person.id = doctor.doctorId WHERE status = 'ICU'";
             Search se = new Search(query);
             se.Show();
             this.Close();
@@ -90,7 +92,9 @@ namespace PAS
 
         private void Ward_Click(object sender, RoutedEventArgs e)
         {
-            string query = "SELECT id, SurName, GivenName, Height, Gender, status, EyeColor FROM person WHERE status = 'Ward'";
+            string query = "SELECT person.surName, person.GivenName, person.Height, person.Gender, person.status, " +
+                    "person.EyeColor, person.id, doctor.doctorId FROM person LEFT JOIN doctor " +
+                    "ON person.id = doctor.doctorId WHERE status = 'Ward'";
             Search se = new Search(query);
             se.Show();
             this.Close();
@@ -108,6 +112,16 @@ namespace PAS
         {
             AddPatient AddPat = new AddPatient(true);
             AddPat.Show();
+            this.Close();
+        }
+
+        private void doctors_Button(object sender, RoutedEventArgs e)
+        {
+            //SELECT id, SurName, GivenName, Height, Gender, status, EyeColor
+            string query = "SELECT person.SurName, person.givenName, person.Height, person.Gender, doctor.work, person.EyeColor, person.id, doctor.doctorId FROM person " +
+                "INNER JOIN doctor ON person.id = doctor.doctorId; ";
+            Search se = new Search(query);
+            se.Show();
             this.Close();
         }
     }
