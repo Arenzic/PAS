@@ -28,17 +28,13 @@ namespace PAS
 
         }
 
-        public SQLiteConnection Conn1 { get => sqlite; set => sqlite = value; }
-
+  
         public void Connect()
         {
 
-
-            string ConnectionString = "Data Source=pas-database.db";
-            Conn1 = new SQLiteConnection(ConnectionString);
             try
             {
-                Conn1.Open();
+                sqlite.Open();
             }
             catch (SQLiteException Ex)
             {
@@ -48,8 +44,8 @@ namespace PAS
             }
             finally
             {
-                if (Conn1.State == System.Data.ConnectionState.Closed)
-                    Conn1 = null;
+                if (sqlite.State == System.Data.ConnectionState.Closed)
+                    sqlite = null;
             }
 
         }
@@ -110,7 +106,7 @@ namespace PAS
         public DataTable DataTableQuery(String QueryString)
         {
             DataTable Table = null;
-            if (Conn1 != null)
+            if (sqlite != null)
             {
                 //creating a table and then filling it with the query info
                 SQLiteCommand Command = new SQLiteCommand(QueryString, sqlite);
@@ -137,10 +133,10 @@ namespace PAS
 
 
             SQLiteDataReader Reader = null;
-            if (Conn1 != null)
+            if (sqlite != null)
             {
 
-                SQLiteCommand Command = new SQLiteCommand(QueryString, Conn1);
+                SQLiteCommand Command = new SQLiteCommand(QueryString, sqlite);
 
 
                 try
