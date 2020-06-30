@@ -56,7 +56,7 @@ namespace PAS
 
             if (FNameInput.Text != "")
             {
-                
+                //concatenating a query string based on user demands
                 if (queryCount < 1)
                 {
                     query = query + " WHERE GivenName LIKE '" + FNameInput.Text + "'";
@@ -131,6 +131,7 @@ namespace PAS
                 }
             }
 
+            //returning the results to the datatable
             DataTable Table = sqlData.DataTableQuery(query);
             SearchResults.ItemsSource = Table.DefaultView;
 

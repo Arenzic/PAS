@@ -29,18 +29,18 @@ namespace PAS
             InitializeComponent();
 
 
-            
+           //setting the values of speicifed fields in the database
             SqliteDataAccess sqldataConn = new SqliteDataAccess();
             int people = sqldataConn.LoadPerson();
             int inWard = sqldataConn.LoadWardPatients();
             int inIcu = sqldataConn.LoadIcuPatients();
 
             //need to use property only (TextboxText), as i cannot bind with a variable.
-            totalPersons.DataContext = new TextboxText() { textdata = people };
+            totalPersons.DataContext = new TextboxText() { queryValue = people };
 
-            totalWard.DataContext = new TextboxText() { textdata = inWard };
+            totalWard.DataContext = new TextboxText() { queryValue = inWard };
 
-            totalIcu.DataContext = new TextboxText() { textdata = inIcu };
+            totalIcu.DataContext = new TextboxText() { queryValue = inIcu };
 
         }
 
@@ -63,10 +63,10 @@ namespace PAS
         }
 
 
-
+        //used for setting the values of database 
         public class TextboxText
         {
-            public int textdata { get; set; }
+            public int queryValue { get; set; }
 
         }
 
@@ -117,7 +117,6 @@ namespace PAS
 
         private void doctors_Button(object sender, RoutedEventArgs e)
         {
-            //SELECT id, SurName, GivenName, Height, Gender, status, EyeColor
             string query = "SELECT person.SurName, person.givenName, person.Height, person.Gender, doctor.work, person.EyeColor, person.id, doctor.doctorId FROM person " +
                 "INNER JOIN doctor ON person.id = doctor.doctorId; ";
             Search se = new Search(query);

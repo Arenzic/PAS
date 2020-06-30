@@ -28,7 +28,7 @@ namespace PAS
 
         }
 
-  
+        //trying to open the connection
         public void Connect()
         {
 
@@ -63,7 +63,7 @@ namespace PAS
 
             return Rowcount;
         }
-
+        //loading the count of Ward for the dashboard 
         public int LoadWardPatients()
         {
             int Rowcount = 0;
@@ -75,7 +75,7 @@ namespace PAS
 
             return Rowcount;
         }
-
+        //loading the count of ICU for the dashboard 
         public int LoadIcuPatients()
         {
             int Rowcount = 0;
@@ -87,7 +87,7 @@ namespace PAS
 
             return Rowcount;
         }
-
+        //loading the count of doctors for the dashboard 
         public int LoadDoctor()
         {
             int Rowcount = 0;
@@ -159,6 +159,7 @@ namespace PAS
         {
             if (sqlite != null)
             {
+                //determining whether it has the doctor promote value
                 if (DoctorPromote)
                 {
                     SQLiteCommand promote = new SQLiteCommand(AddString, sqlite);

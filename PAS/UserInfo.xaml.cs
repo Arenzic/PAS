@@ -112,12 +112,10 @@ namespace PAS
                 }
             }
 
-            //EyeColorCombo.SelectedIndex = (int)reader.GetValue(6);
-
-
 
             reader.Close();
 
+            //setting the id to the local string
             userid2 = userId;
 
 
@@ -143,6 +141,7 @@ namespace PAS
 
         private void Update_Button_Click(object sender, RoutedEventArgs e)
         {
+            //bool doctor prom is used to determine which query it needs, doctor/patient
             bool DoctorProm = false;
             Person p = new Person();
             
@@ -183,8 +182,8 @@ namespace PAS
             System.Windows.MessageBox.Show("Person deleted.");
 
             string query = null;
-            Search srch = new Search(query);
-            srch.Show();
+            Search se = new Search(query);
+            se.Show();
             this.Close();
         }
 
