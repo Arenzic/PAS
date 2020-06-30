@@ -18,7 +18,7 @@
         <Button Content="Search" HorizontalAlignment="Left" Margin="543,32,0,0" VerticalAlignment="Top" Width="114" Height="23" Background="#FF005EB8" Foreground="White" BorderBrush="{x:Null}" FontFamily="Gen" Click="allPatients_Button"/>
         <Image HorizontalAlignment="Left" Height="82" Margin="218,144,0,0" VerticalAlignment="Top" Width="95" Source="icons8-hospital-room-64.png"/>
         <TextBlock Name ="totalWard"  HorizontalAlignment="Left" Margin="245,230,0,0" TextWrapping="Wrap" FontSize="20"  VerticalAlignment="Top"> <Run Text="{Binding queryValue}"/></TextBlock>
-        <TextBlock Name ="totalPersons"  HorizontalAlignment="Left" Margin="400,230,0,0" TextWrapping="Wrap" FontSize="20"  VerticalAlignment="Top"> <Run Text="{Binding queryValue}"/></TextBlock>
+        <TextBlock x:Name ="totalDoctors"  HorizontalAlignment="Left" Margin="417,235,0,0" TextWrapping="Wrap" FontSize="20"  VerticalAlignment="Top"> <Run Text="{Binding queryValue}"/></TextBlock>
         <TextBlock Name ="totalIcu"  HorizontalAlignment="Left" Margin="590,230,0,0" TextWrapping="Wrap" FontSize="20"  VerticalAlignment="Top"> <Run Text="{Binding queryValue}"/></TextBlock>
 
         <TextBlock HorizontalAlignment="Left" Margin="383,263,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Doctors "/><Run Text="in "/><Run Text="PAS"/><Run Text=" "/></TextBlock>
@@ -32,6 +32,8 @@
         <Button Content="View" HorizontalAlignment="Left" Margin="537,287,0,0" VerticalAlignment="Top" Width="114" Height="23" Background="#FF005EB8" Foreground="White" BorderBrush="{x:Null}" FontFamily="Gen" Click="ICU_Button"/>
         <Image HorizontalAlignment="Left" Height="82" Margin="556,156,0,0" VerticalAlignment="Top" Width="95" Source="icons8-hospital-bed-64.png"/>
         <Button Content="Add Doctor" HorizontalAlignment="Left" Margin="0,126,0,0" VerticalAlignment="Top" Width="168" Height="44" Background="#FF425563" Foreground="White" BorderBrush="{x:Null}" FontFamily="Gen" Click="AddDoctor_Button"/>
+        <TextBlock x:Name ="totalPeople"  HorizontalAlignment="Left" Margin="199,371,0,0" TextWrapping="Wrap" FontSize="20"  VerticalAlignment="Top"><Run Text="{Binding queryValue}"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="260,380,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Records in PAS"/>
     </Grid>
 
 </Window>

@@ -161,6 +161,7 @@
     </Compile>
     <Compile Include="Classes\Doctor.cs" />
     <Compile Include="Classes\Person.cs" />
+    <Compile Include="isDoctor.cs" />
     <Compile Include="Search.xaml.cs">
       <DependentUpon>Search.xaml</DependentUpon>
     </Compile>

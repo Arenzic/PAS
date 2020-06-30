@@ -214,6 +214,26 @@ namespace PAS
 
             string promQuery = "INSERT INTO doctor(doctorId, work) values (" + userid2 + ", @work)";
             sqldata.Update(promQuery, p, DoctorProm);
+            
+
+            //resetting the person class fields to the buttons
+            p.SurName = SurnameInput.Text;
+            p.GivenName = FNameInput.Text;
+            p.Height = decimal.Parse(HeightInput.Text.Replace('.', ','));
+
+
+            ComboBoxItem GenderItem = (ComboBoxItem)GenderCombo.SelectedItem;
+            p.Gender = GenderItem.Content.ToString();
+
+            ComboBoxItem EyeItem = (ComboBoxItem)EyeColorCombo.SelectedItem;
+            p.EyeColor = EyeItem.Content.ToString();
+
+
+            p.Status = "";
+            DoctorProm = false;
+            //updating the status
+            String query = "UPDATE person SET SurName = @surname, GivenName = givenname, Height = @height, Gender = @gender, status = @status, EyeColor = @eyecolor WHERE id = " + userid2 + ";";
+            sqldata.Update(query, p, DoctorProm);
 
             System.Windows.MessageBox.Show("Person updated to Doctor.");
         }

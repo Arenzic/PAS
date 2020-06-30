@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace PAS
 {
-    public class Doctor : Person
+    public enum IsDoctor
     {
-
-        public string work { get; set; }
-
-        public int doctorId { get; set; }
+        Patient,
+        Doctor
     }
 }

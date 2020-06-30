@@ -31,36 +31,22 @@ namespace PAS
 
            //setting the values of speicifed fields in the database
             SqliteDataAccess sqldataConn = new SqliteDataAccess();
-            int people = sqldataConn.LoadPerson();
+            int doctors = sqldataConn.LoadDoctor();
             int inWard = sqldataConn.LoadWardPatients();
             int inIcu = sqldataConn.LoadIcuPatients();
+            int totalP = sqldataConn.LoadPerson();
 
             //need to use property only (TextboxText), as i cannot bind with a variable.
-            totalPersons.DataContext = new TextboxText() { queryValue = people };
+            totalDoctors.DataContext = new TextboxText() { queryValue = doctors };
 
             totalWard.DataContext = new TextboxText() { queryValue = inWard };
 
             totalIcu.DataContext = new TextboxText() { queryValue = inIcu };
 
+            totalPeople.DataContext = new TextboxText() { queryValue = totalP };
+
         }
 
-        private int LoadPatientInfo()
-        {
-            var nodeCount = 0;
-            using (var reader = XmlReader.Create("patients.xml"))
-            {
-                while (reader.Read())
-                {
-                    //if the reader finds an element by the name of surname, add one to count.
-                    if (reader.NodeType == XmlNodeType.Element &&
-                        reader.Name == "SurName")
-                    {
-                        nodeCount++;
-                    }
-                }
-            }
-            return nodeCount;
-        }
 
 
         //used for setting the values of database 

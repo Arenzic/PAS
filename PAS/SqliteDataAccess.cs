@@ -87,12 +87,13 @@ namespace PAS
 
             return Rowcount;
         }
-        //loading the count of doctors for the dashboard 
+
+        //loading the count of doctors on the dashboard
         public int LoadDoctor()
         {
             int Rowcount = 0;
             SQLiteCommand cmd = new SQLiteCommand(sqlite);
-            cmd.CommandText = "SELECT COUNT (id) FROM person WHERE status = 'ICU'";
+            cmd.CommandText = "SELECT COUNT (doctorId) FROM doctor";
 
             Rowcount = Convert.ToInt32(cmd.ExecuteScalar());
 
@@ -177,7 +178,7 @@ namespace PAS
                     }
                 }
 
-
+                //sql prepared statement
                 SQLiteCommand Command = new SQLiteCommand(AddString, sqlite);
 
                 Command.Parameters.AddWithValue("@surname", p.SurName);
@@ -221,9 +222,6 @@ namespace PAS
                 //passing paramateres securely with add value
                 insertQuery.Parameters.AddWithValue("@sname", p.SurName);
                 insertQuery.Parameters.AddWithValue("@gname", p.GivenName);
-                //SQLiteParameter param = new SQLiteParameter("@height", p.Height);
-                //SourceColumn = "height";
-                //insertQuery.Parameters.Add(param);
                 insertQuery.Parameters.AddWithValue("@height", p.Height);
                 insertQuery.Parameters.AddWithValue("@gender", p.Gender);
                 insertQuery.Parameters.AddWithValue("@eyecolor", p.EyeColor);
@@ -255,9 +253,6 @@ namespace PAS
                     //passing paramateres securely with add value
                     insertQuery.Parameters.AddWithValue("@sname", d.SurName);
                     insertQuery.Parameters.AddWithValue("@gname", d.GivenName);
-                    //SQLiteParameter param = new SQLiteParameter("@height", p.Height);
-                    //param.SourceColumn = "height";
-                    //insertQuery.Parameters.Add(param);
                     insertQuery.Parameters.AddWithValue("@height", d.Height);
                     insertQuery.Parameters.AddWithValue("@gender", d.Gender);
                     insertQuery.Parameters.AddWithValue("@eyecolor", d.EyeColor);

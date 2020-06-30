@@ -8,6 +8,9 @@ namespace PAS
 {
     public class Person
     {
+        //protected IsDoctor isDoc;
+
+        //public IsDoctor GetDoctor() { return isDoc; }
         public string SurName { get;  set; }
         public string GivenName { get;  set; }
         public decimal Height { get;  set; }
@@ -15,6 +18,9 @@ namespace PAS
         public string EyeColor { get;  set; }
 
         public string Status { get; set; }
+
+        //public bool GetPosition() { return isDoc == IsDoctor.Patient ? false : true; }
+
 
 
 

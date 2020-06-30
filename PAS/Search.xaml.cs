@@ -173,6 +173,7 @@ namespace PAS
             {
                 string id = select.Row[6].ToString();
                 string doctorId = select.Row[7].ToString();
+               
                 //id paramater
                 UserInfo ui = new UserInfo(select, id, doctorId);
                 ui.Show();
