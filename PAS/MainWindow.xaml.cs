@@ -45,6 +45,8 @@ namespace PAS
 
             totalPeople.DataContext = new TextboxText() { queryValue = totalP };
 
+
+
         }
 
 
